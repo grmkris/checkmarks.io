@@ -24,6 +24,8 @@ const MyApp: AppType = ({ Component, pageProps }) => {
   return (
     <WagmiConfig config={config}>
       <ClerkProvider
+        afterSignUpUrl="/app"
+        afterSignInUrl={"/app"}
         appearance={{
           baseTheme: dark,
         }}
