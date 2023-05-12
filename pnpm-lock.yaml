@@ -212,6 +212,18 @@ importers:
         specifier: ^5.0.4
         version: 5.0.4
 
+  helpers:
+    dependencies:
+      dotenv:
+        specifier: ^16.0.3
+        version: 16.0.3
+      ethers:
+        specifier: ^5.7.2
+        version: 5.7.2
+      ts-node:
+        specifier: ^10.9.1
+        version: 10.9.1(@types/node@20.1.2)(typescript@5.0.4)
+
   sg:
     dependencies:
       '@graphprotocol/graph-cli':
@@ -4748,7 +4760,6 @@ packages:
   /dotenv@16.0.3:
     resolution: {integrity: sha512-7GO6HghkA5fYG9TYnNxi14/7K9f5occMlp3zXAuSxn7CKCxt9xbNWG7yF8hTCSUchlfWSe3uLmlPfigevRItzQ==}
     engines: {node: '>=12'}
-    dev: true
 
   /duplexify@4.1.2:
     resolution: {integrity: sha512-fz3OjcNCHmRP12MJoZMPglx8m4rrFP8rovnk4vT8Fs+aonZoCwGg10dSsQsfP/E62eZcPTMSMP6686fu9Qlqtw==}
