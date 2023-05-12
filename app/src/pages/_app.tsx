@@ -7,6 +7,7 @@ import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
 import { QueryClient } from "@tanstack/react-query";
 import { createConfig, mainnet, WagmiConfig } from "wagmi";
 import { createPublicClient, http } from "viem";
+import { dark } from "@clerk/themes";
 
 const queryClient = new QueryClient();
 
@@ -22,7 +23,13 @@ const config = createConfig({
 const MyApp: AppType = ({ Component, pageProps }) => {
   return (
     <WagmiConfig config={config}>
-      <ClerkProvider {...pageProps}>
+      <ClerkProvider
+        afterSignUpUrl="/app"
+        afterSignInUrl={"/app"}
+        appearance={{
+          baseTheme: dark,
+        }}
+      >
         <Component {...pageProps} />
         <ReactQueryDevtools />
       </ClerkProvider>

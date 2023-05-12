@@ -6,7 +6,7 @@ import { githubConnector } from "./githubConnector";
 import { tiktokConnector } from "./tiktokConnector";
 
 const helloEndpoint = publicProcedure
-  .input(z.object({ text1: z.string() }))
+  .input(z.object({ text: z.string() }))
   .output(z.object({ greeting: z.string() }))
   .query(({ input }) => {
     return {
