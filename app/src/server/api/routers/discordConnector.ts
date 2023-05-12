@@ -12,6 +12,7 @@ export const discordConnector = protectedProcedure.query(async ({ ctx }) => {
   );
 
   const disToken = discordToken[0]?.token;
+  if (!disToken) throw new Error("No discord token found");
   const oauth = new discord();
   const discordUser = await oauth.getUser(disToken);
   const guilds = await oauth.getUserGuilds(disToken);
