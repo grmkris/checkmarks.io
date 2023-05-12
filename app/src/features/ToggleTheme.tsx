@@ -10,7 +10,7 @@ export const ToggleTheme = () => {
 
   return (
     <NoSSR>
-      <div title="Change Theme" className="dropdown-top dropdown">
+      <div title="Change Theme" className="dropdown-bottom dropdown">
         <div tabIndex={0} className="btn-ghost btn gap-1 normal-case">
           <svg
             width="20"

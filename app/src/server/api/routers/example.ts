@@ -6,21 +6,14 @@ import { Octokit } from "octokit";
 import discord from "discord-oauth2";
 
 export const exampleRouter = createTRPCRouter({
-    hello: publicProcedure
-    .input(z.object({ text1: z.string() }))
-        .output(z.object({ greeting: z.string() }))
+  hello: publicProcedure
+    .input(z.object({ text: z.string() }))
+    .output(z.object({ greeting: z.string() }))
     .query(({ input }) => {
       return {
         greeting: `Hello ${input.text}`,
       };
     }),
-  helloMutation: publicProcedure
-      .input(z.object({ text: z.string() }))
-        .mutation(({ input }) => {
-            return {
-                greeting: `Hello ${input.text}`,
-            };
-        }),
   getAll: protectedProcedure.query(async ({ ctx }) => {
     console.log("auth-user", ctx.auth);
     const user = await clerkClient.users.getUser(ctx.auth?.userId);
