@@ -15,3 +15,11 @@ accountCreationDate represents person account creation date as integer value
 ```
   "accountCreationDate": 6
 ```
+
+# followersCount
+
+followersCount represents person followers count as integer value
+
+```
+  "followersCount": 6
+```
