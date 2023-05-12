@@ -10,6 +10,7 @@
     "start": "next start"
   },
   "dependencies": {
+    "@sismo-core/sismo-connect-react": "^0.0.13",
     "@clerk/nextjs": "^4.17.3",
     "@clerk/themes": "^1.6.4",
     "@heroicons/react": "^2.0.18",

@@ -2,11 +2,7 @@ lockfileVersion: '6.0'
 
 importers:
 
-  .:
-    dependencies:
-      '@sismo-core/sismo-connect-react':
-        specifier: ^0.0.13
-        version: 0.0.13(typescript@5.0.4)
+  .: {}
 
   app:
     dependencies:
@@ -22,6 +18,9 @@ importers:
       '@prisma/client':
         specifier: ^4.14.0
         version: 4.14.0(prisma@4.14.0)
+      '@sismo-core/sismo-connect-react':
+        specifier: ^0.0.13
+        version: 0.0.13(typescript@5.0.4)(zod@3.21.4)
       '@t3-oss/env-nextjs':
         specifier: ^0.3.1
         version: 0.3.1(typescript@5.0.4)(zod@3.21.4)
@@ -2022,7 +2021,7 @@ packages:
       tslib: 1.14.1
     dev: true
 
-  /@sismo-core/sismo-connect-client@0.0.11(typescript@5.0.4):
+  /@sismo-core/sismo-connect-client@0.0.11(typescript@5.0.4)(zod@3.21.4):
     resolution: {integrity: sha512-03WPta/6rE0PPqWaM8GAGTvbxw9eYK2lFbpDcWGnfNfrUKmis8TUtjDJbEhZyQdX1q7qdPDpFw9Wcufewr9n1w==}
     engines: {npm: USE YARN INSTEAD OF NPM}
     dependencies:
@@ -2037,11 +2036,11 @@ packages:
       - zod
     dev: false
 
-  /@sismo-core/sismo-connect-react@0.0.13(typescript@5.0.4):
+  /@sismo-core/sismo-connect-react@0.0.13(typescript@5.0.4)(zod@3.21.4):
     resolution: {integrity: sha512-O8IHG8YV/eOvlu2BXCvVDWU12ThZfuLCYBQLp6mC8TnsTDi7HErtwwUieLegD8o41+V/ZZcJMu6tLL/gRXe50g==}
     engines: {npm: USE YARN INSTEAD OF NPM}
     dependencies:
-      '@sismo-core/sismo-connect-client': 0.0.11(typescript@5.0.4)
+      '@sismo-core/sismo-connect-client': 0.0.11(typescript@5.0.4)(zod@3.21.4)
     transitivePeerDependencies:
       - bufferutil
       - typescript
