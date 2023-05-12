@@ -10,8 +10,5 @@
   },
   "keywords": [],
   "author": "",
-  "license": "ISC",
-  "dependencies": {
-    "@sismo-core/sismo-connect-react": "^0.0.13"
-  }
+  "license": "ISC"
 }
