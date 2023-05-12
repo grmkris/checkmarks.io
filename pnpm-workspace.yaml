@@ -1,0 +1,4 @@
+packages:
+  - "checkmarks.io"
+  - "eth"
+  - "sg"
