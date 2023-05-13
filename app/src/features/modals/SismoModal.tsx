@@ -1,5 +1,6 @@
 import { SocialNames, useModalStore } from "./useModalStore";
 import { ICredential, ModalContent } from "../../components/ModalContent";
+import { DataLabel } from "./DiscordModal";
 
 export const SismoModal = () => {
   const { data, close } = useModalStore((state) => ({
@@ -9,11 +10,11 @@ export const SismoModal = () => {
 
   const creds: ICredential[] = [
     {
-      text: "Your vault Id",
+      text: <DataLabel label={"Your vaultId"} data={"372"} />,
       action: () => {},
     },
     {
-      text: "Your ZKPs",
+      text: <DataLabel label={"Your ZKPs"} data={"TBD"} />,
       action: () => {},
     },
   ];

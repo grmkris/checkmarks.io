@@ -6,6 +6,8 @@ import { RedditModal } from "./RedditModal";
 import { OnchainModal } from "./OnchainModal";
 import { SismoModal } from "./SismoModal";
 import { LensModal } from "./LensModal";
+import { TikTokModal } from "./TikTokModal";
+import { GithubModal } from "./GithubModal";
 
 export const AppModals = () => {
   return (
@@ -41,6 +43,10 @@ const ModalViews = () => {
       return <SismoModal />;
     case SocialNames.Onchain:
       return <OnchainModal />;
+    case SocialNames.TikTok:
+      return <TikTokModal />;
+    case SocialNames.Github:
+      return <GithubModal />;
     default:
       return <></>;
   }

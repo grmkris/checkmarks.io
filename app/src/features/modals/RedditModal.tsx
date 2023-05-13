@@ -1,27 +1,29 @@
 import { SocialNames, useModalStore } from "./useModalStore";
 import { ICredential, ModalContent } from "../../components/ModalContent";
+import { DataLabel } from "./DiscordModal";
 
 export const RedditModal = () => {
-  const { data, close } = useModalStore((state) => ({
-    data: state.data,
-    close: state.closeModal,
-  }));
-
   const creds: ICredential[] = [
     {
-      text: "Karma points (post and comment) ",
+      text: <DataLabel label={"Reddit ID"} data={"Kris0"} />,
       action: () => {},
     },
     {
-      text: "Number of posts ",
+      text: (
+        <DataLabel label={"Karma points (post and comment)"} data={"23232"} />
+      ),
       action: () => {},
     },
     {
-      text: "Number of comments ",
+      text: <DataLabel label={"Number of posts"} data={"100"} />,
       action: () => {},
     },
     {
-      text: "Subredditss ",
+      text: <DataLabel label={"Number of comments"} data={"1239"} />,
+      action: () => {},
+    },
+    {
+      text: <DataLabel label={"Number of followers"} data={"350"} />,
       action: () => {},
     },
   ];

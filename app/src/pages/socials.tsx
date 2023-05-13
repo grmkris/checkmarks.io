@@ -17,6 +17,7 @@ const Socials = () => {
     { name: SocialNames.Reddit },
     { name: SocialNames.Discord },
     { name: SocialNames.TikTok },
+    { name: SocialNames.Github },
   ];
 
   const web3SocialsButtons: Social[] = [

@@ -4,7 +4,7 @@ import { QRCodeSVG } from "qrcode.react";
 import { useState } from "react";
 
 export interface ICredential {
-  text: string;
+  text: string | JSX.Element;
   action: () => void;
 }
 
@@ -12,7 +12,7 @@ const CredentialSelector = ({
   text,
   action,
 }: {
-  text: string;
+  text: string | JSX.Element;
   action: any;
 }) => {
   return (

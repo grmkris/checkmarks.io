@@ -1,5 +1,6 @@
 import { SocialNames, useModalStore } from "./useModalStore";
 import { ICredential, ModalContent } from "../../components/ModalContent";
+import { DataLabel } from "./DiscordModal";
 
 export const OnchainModal = () => {
   const { data, close } = useModalStore((state) => ({
@@ -9,11 +10,11 @@ export const OnchainModal = () => {
 
   const creds: ICredential[] = [
     {
-      text: "Your lens handle",
+      text: <DataLabel label={"Number of owned NFTs"} data={"350"} />,
       action: () => {},
     },
     {
-      text: "Your achievements",
+      text: <DataLabel label={"ENs"} data={"kris0.eth"} />,
       action: () => {},
     },
   ];

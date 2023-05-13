@@ -12,6 +12,7 @@ export enum SocialNames {
   Lens = "Lens",
   Sismo = "Sismo",
   Onchain = "Onchain",
+  Github = "Github",
 }
 
 interface ModalData {

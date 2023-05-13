@@ -22,11 +22,11 @@ export const IDBStorage: StateStorage = {
 };
 
 export const CredentialProviders = [
-  "twitter",
-  "discord",
-  "github",
-  "tiktok",
-  "sismo",
+  "Twitter",
+  "Discord",
+  "Github",
+  "TikTok",
+  "Sismo",
 ] as const;
 
 export type CredentialProvider = (typeof CredentialProviders)[number];
@@ -53,6 +53,7 @@ export const useCredentialStore = create<ICredentialStore>()(
         credentials: [],
         onSuccessRedirectUrl: undefined,
         addCredential: (creds) => {
+          console.log("adding creds", creds);
           set((state) => {
             if (
               state.credentials.find((c: any) => c.provider === creds.provider)
