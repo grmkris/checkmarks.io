@@ -98,8 +98,11 @@ const ProfileSVG = () => {
 };
 
 const MenuButtonSVG = () => {
+  const router = useRouter();
+
   return (
     <svg
+      onClick={() => router.push("/connections")}
       width="59"
       height="59"
       viewBox="0 0 59 59"
@@ -163,7 +166,6 @@ const Footer = () => {
 };
 
 export const Layout = (props: { children: ReactNode }) => {
-  const router = useRouter();
   return (
     <>
       <Head>
