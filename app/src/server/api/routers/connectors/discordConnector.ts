@@ -1,6 +1,6 @@
 import { clerkClient } from "@clerk/nextjs";
-import { protectedProcedure } from "../trpc";
 import discord from "discord-oauth2";
+import { protectedProcedure } from "../../trpc";
 
 export const discordConnector = protectedProcedure.query(async ({ ctx }) => {
   console.table("Discord connection has started");

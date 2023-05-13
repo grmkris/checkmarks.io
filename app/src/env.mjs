@@ -10,6 +10,7 @@ export const env = createEnv({
     DATABASE_URL: z.string().url().optional(),
     CLERK_SECRET_KEY: z.string(),
     NODE_ENV: z.enum(["development", "test", "production"]),
+    POLYGON_ID_NODE_API_KEY: z.string()
   },
 
   /**
@@ -30,5 +31,6 @@ export const env = createEnv({
     CLERK_SECRET_KEY: process.env.CLERK_SECRET_KEY,
     NODE_ENV: process.env.NODE_ENV,
     NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY: process.env.NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY,
+    POLYGON_ID_NODE_API_KEY: process.env.POLYGON_ID_NODE_API_KEY
   },
 });

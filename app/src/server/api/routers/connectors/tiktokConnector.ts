@@ -1,5 +1,5 @@
 import { clerkClient } from "@clerk/nextjs";
-import { protectedProcedure } from "../trpc";
+import { protectedProcedure } from "../../trpc";
 
 export const tiktokConnector = protectedProcedure.query(async ({ ctx }) => {
   console.table("TikTok connection has started");

@@ -1,6 +1,6 @@
 import { clerkClient } from "@clerk/nextjs";
 import { Octokit } from "octokit";
-import { protectedProcedure } from "../trpc";
+import { protectedProcedure } from "../../trpc";
 
 export const githubConnector = protectedProcedure.query(async ({ ctx }) => {
   console.table("Github connection has started");
