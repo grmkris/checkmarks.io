@@ -1,19 +1,12 @@
 import { clerkClient } from "@clerk/nextjs";
 import discord from "discord-oauth2";
 import { protectedProcedure } from "../../trpc";
-import { z } from "zod";
+import { DidSchema } from "../did";
+import { createDiscordVC } from "../../../vc/generateVCs";
 
 export const discordConnector = protectedProcedure
-  .input(
-    z.object({
-      did: z
-        .string()
-        .describe(
-          "Subject DID from useIden3DID hook -> did.data?.did.toString()"
-        ),
-    })
-  )
-  .query(async ({ ctx }) => {
+  .input(DidSchema)
+  .query(async ({ ctx, input }) => {
     const user = await clerkClient.users.getUser(ctx.auth?.userId);
 
     // TODO make sure user is the same as the one in the did
@@ -28,9 +21,21 @@ export const discordConnector = protectedProcedure
     const oauth = new discord();
     const discordUser = await oauth.getUser(disToken);
     const guilds = await oauth.getUserGuilds(disToken);
-    if (guilds[0]?.id) {
-      const guild = await oauth.getGuildMember(disToken, guilds[0]?.id);
-      console.table("Discord connection has finished");
-      return guild;
-    }
+    return createDiscordVC({
+      id: input.did,
+      username: discordUser.username,
+      guilds: guilds.map((guild) => {
+        return {
+          guildId: guild.id,
+          guildFeatures: guild.features,
+          guildIcon: guild.icon ?? "",
+          guildName: guild.name,
+          guildOwner: guild.owner ?? false,
+          guildPermissions: guild.permissions?.toString() ?? "",
+        };
+      }),
+      accountCreationDate: "2010-12-31", // TODO: get this from discord
+      email: discordUser.email ?? "",
+      verified: discordUser.verified ?? false,
+    });
   });
