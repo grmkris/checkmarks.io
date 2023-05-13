@@ -1,4 +1,8 @@
-import { APP_MODALS_ID, useModalStore } from "./useModalStore";
+import { APP_MODALS_ID, SocialNames, useModalStore } from "./useModalStore";
+import { TwitterModal } from "./TwitterModal";
+import { DiscordModal } from "./DiscordModal";
+import { FacebookModal } from "./FacebookModal";
+import { RedditModal } from "./RedditModal";
 
 export const AppModals = () => {
   return (
@@ -20,37 +24,17 @@ export const AppModals = () => {
 const ModalViews = () => {
   const view = useModalStore((state) => state.view);
   switch (view) {
-    case "HelloWorldView1":
-      return <HelloWorldView1 />;
-    case "HelloWorldView2":
-      return <HelloWorldView2 />;
+    case SocialNames.Twitter:
+      return <TwitterModal />;
+    case SocialNames.Facebok:
+      return <FacebookModal />;
+    case SocialNames.Discord:
+      return <DiscordModal />;
+    case SocialNames.Reddit:
+      return <RedditModal />;
     default:
-      return <>Hello</>;
+      return <></>;
   }
-};
-
-const HelloWorldView1 = () => {
-  const { data, close } = useModalStore((state) => ({
-    data: state.data,
-    close: state.closeModal,
-  }));
-  console.log("HelloWorldModal1", data);
-  return (
-    <>
-      <h3 className="text-lg font-bold">
-        Congratulations random Internet user! {data?.HelloWorldView1?.name}
-      </h3>
-      <p className="py-4">
-        You are selected for a chance to get one year of subscription to use
-        Wikipedia for free!
-      </p>
-      <div className="modal-action">
-        <button className="btn" onClick={() => close()}>
-          Close
-        </button>
-      </div>
-    </>
-  );
 };
 
 const HelloWorldView2 = () => {
