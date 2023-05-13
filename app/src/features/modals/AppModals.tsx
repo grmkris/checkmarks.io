@@ -11,9 +11,9 @@ export const AppModals = () => {
       <input type="checkbox" id={APP_MODALS_ID} className="modal-toggle" />
       <label
         htmlFor={APP_MODALS_ID}
-        className="modal modal-bottom cursor-pointer sm:modal-middle"
+        className="modal modal-bottom cursor-pointer sm:modal-middle "
       >
-        <label className="modal-box relative" htmlFor="">
+        <label className="modal-box relative bg-neutral" htmlFor="">
           <ModalViews />
         </label>
       </label>
@@ -26,7 +26,7 @@ const ModalViews = () => {
   switch (view) {
     case SocialNames.Twitter:
       return <TwitterModal />;
-    case SocialNames.Facebok:
+    case SocialNames.Facebook:
       return <FacebookModal />;
     case SocialNames.Discord:
       return <DiscordModal />;

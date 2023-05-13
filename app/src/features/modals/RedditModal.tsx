@@ -1,4 +1,5 @@
-import { useModalStore } from "./useModalStore";
+import { SocialNames, useModalStore } from "./useModalStore";
+import { ICredential, ModalContent } from "../../components/ModalContent";
 
 export const RedditModal = () => {
   const { data, close } = useModalStore((state) => ({
@@ -6,20 +7,28 @@ export const RedditModal = () => {
     close: state.closeModal,
   }));
 
+  const creds: ICredential[] = [
+    {
+      text: "Karma points (post and comment) ",
+      action: () => {},
+    },
+    {
+      text: "Number of posts ",
+      action: () => {},
+    },
+    {
+      text: "Number of comments ",
+      action: () => {},
+    },
+    {
+      text: "Subredditss ",
+      action: () => {},
+    },
+  ];
   return (
-    <>
-      <h3 className="text-lg font-bold">
-        Congratulations random Internet user! {data?.HelloWorldView1?.name}
-      </h3>
-      <p className="py-4">
-        You are selected for a chance to get one year of subscription to use
-        Wikipedia for free!
-      </p>
-      <div className="modal-action">
-        <button className="btn" onClick={() => close()}>
-          Close
-        </button>
-      </div>
-    </>
+    <ModalContent
+      title={SocialNames.Reddit.toUpperCase()}
+      credentials={creds}
+    />
   );
 };

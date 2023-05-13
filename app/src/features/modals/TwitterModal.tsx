@@ -1,4 +1,5 @@
-import { useModalStore } from "./useModalStore";
+import { SocialNames, useModalStore } from "./useModalStore";
+import { ICredential, ModalContent } from "../../components/ModalContent";
 
 export const TwitterModal = () => {
   const { data, close } = useModalStore((state) => ({
@@ -6,20 +7,28 @@ export const TwitterModal = () => {
     close: state.closeModal,
   }));
 
+  const creds: ICredential[] = [
+    {
+      text: "Number of followers ",
+      action: () => {},
+    },
+    {
+      text: "Number of tweets ",
+      action: () => {},
+    },
+    {
+      text: "Number of likes ",
+      action: () => {},
+    },
+    {
+      text: "Number of retweets ",
+      action: () => {},
+    },
+  ];
   return (
-    <>
-      <h3 className="text-lg font-bold">
-        MODAL TWITTER {data?.HelloWorldView1?.name}
-      </h3>
-      <p className="py-4">
-        You are selected for a chance to get one year of subscription to use
-        Wikipedia for free!
-      </p>
-      <div className="modal-action">
-        <button className="btn" onClick={() => close()}>
-          Close
-        </button>
-      </div>
-    </>
+    <ModalContent
+      title={SocialNames.Twitter.toUpperCase()}
+      credentials={creds}
+    />
   );
 };
