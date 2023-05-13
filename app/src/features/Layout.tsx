@@ -5,6 +5,14 @@ import { AppModals } from "./modals/AppModals";
 import { useRouter } from "next/router";
 import Head from "next/head";
 
+const Header = () => {
+  return (
+    <h1 className="mt-8 text-5xl font-extrabold tracking-tight text-white sm:text-[5rem]">
+      check<span className="text-accent">marks</span>
+    </h1>
+  );
+};
+
 export const NAVIGATION_ITEMS = [
   <Link href="/app" key={0}>
     <HomeIcon className={"h-5 w-5"} />{" "}
@@ -24,6 +32,7 @@ export const Layout = (props: { children: ReactNode }) => {
         {/* <link rel="icon" href="/logo.png" />*/}
       </Head>
       <main className="container mx-auto flex min-h-screen max-w-4xl flex-col items-center justify-center bg-base-100">
+        <Header />
         <AppModals />
         {props.children}
         {router.pathname !== "/" && <NavigationBottom />}
