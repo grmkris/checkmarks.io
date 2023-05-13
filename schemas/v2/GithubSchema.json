@@ -95,11 +95,11 @@
       ],
       "properties": {
         "login": {
-          "title": "GitHub Login",
+          "title": "Github Login",
           "type": "string"
         },
         "github_id": {
-          "title": "GitHub ID",
+          "title": "Github ID",
           "type": "integer"
         },
         "avatar_url": {
