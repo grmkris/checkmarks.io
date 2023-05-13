@@ -1,4 +1,4 @@
-import { execute } from "../../.graphclient";
+import { execute } from "../../../.graphclient";
 import { useQuery } from "@tanstack/react-query";
 import gql from "graphql-tag";
 

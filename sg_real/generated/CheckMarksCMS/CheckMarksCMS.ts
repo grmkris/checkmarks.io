@@ -27,8 +27,8 @@ export class StateChange__Params {
     return this._event.parameters[0].value.toAddress();
   }
 
-  get data(): Bytes {
-    return this._event.parameters[1].value.toBytes();
+  get data(): string {
+    return this._event.parameters[1].value.toString();
   }
 }
 
@@ -55,8 +55,8 @@ export class StateChangeCall__Inputs {
     this._call = call;
   }
 
-  get data_(): Array<Bytes> {
-    return this._call.inputValues[0].value.toBytesArray();
+  get data_(): Array<string> {
+    return this._call.inputValues[0].value.toStringArray();
   }
 }
 

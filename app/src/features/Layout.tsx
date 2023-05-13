@@ -9,7 +9,7 @@ import { MenuButtonSVG } from "../components/svg/MenuButtonSVG";
 
 const Header = () => {
   return (
-    <div class="flex flex-nowrap ">
+    <div className="flex flex-nowrap ">
       <h1 className="mt-8 align-middle text-5xl font-extrabold tracking-tight text-white sm:text-[5rem]">
         <CheckmarkIcon></CheckmarkIcon>
       </h1>

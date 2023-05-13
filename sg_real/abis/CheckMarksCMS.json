@@ -10,9 +10,9 @@
       },
       {
         "indexed": false,
-        "internalType": "bytes",
+        "internalType": "string",
         "name": "data",
-        "type": "bytes"
+        "type": "string"
       }
     ],
     "name": "StateChange",
@@ -20,7 +20,11 @@
   },
   {
     "inputs": [
-      { "internalType": "bytes[]", "name": "data_", "type": "bytes[]" }
+      {
+        "internalType": "string[]",
+        "name": "data_",
+        "type": "string[]"
+      }
     ],
     "name": "stateChange",
     "outputs": [],
