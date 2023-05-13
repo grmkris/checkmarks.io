@@ -1,0 +1,19 @@
+{
+  "name": "CheckMarksCMS",
+  "license": "UNLICENSED",
+  "scripts": {
+    "codegen": "graph codegen",
+    "build": "graph build",
+    "deploy:hosted": "graph deploy --product hosted-service grmkris/checkmarkscms",
+    "deploy": "graph deploy --node https://api.studio.thegraph.com/deploy/ CheckMarksCMS",
+    "create-local": "graph create --node http://localhost:8020/ CheckMarksCMS",
+    "remove-local": "graph remove --node http://localhost:8020/ CheckMarksCMS",
+    "deploy-local": "graph deploy --node http://localhost:8020/ --ipfs http://localhost:5001 CheckMarksCMS",
+    "test": "graph test"
+  },
+  "dependencies": {
+    "@graphprotocol/graph-cli": "0.49.0",
+    "@graphprotocol/graph-ts": "0.29.1"
+  },
+  "devDependencies": { "matchstick-as": "0.5.0" }
+}

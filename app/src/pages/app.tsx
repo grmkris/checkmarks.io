@@ -3,6 +3,7 @@ import { useUser } from "@clerk/nextjs";
 import { useIden3DID } from "../features/iden3/useIden3DID";
 import { api } from "../utils/api";
 import { useCredentialStore } from "../features/CredentialStore";
+import { useCheckmarksCmsSubgraph } from "../features/useSubgraph";
 
 const ConnectedAccounts = () => {
   const { user } = useUser();
@@ -40,6 +41,10 @@ function IpfsUploadButton() {
 
 export default function App() {
   const did = useIden3DID();
+  const user = useUser();
+  const sg = useCheckmarksCmsSubgraph({
+    account: user?.user?.web3Wallets[0].web3Wallet,
+  });
 
   console.log(did.data?.did.toString());
   return (

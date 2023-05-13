@@ -2,3 +2,4 @@ packages:
   - "app"
   - "eth"
   - "sg"
+  - "sg_real"

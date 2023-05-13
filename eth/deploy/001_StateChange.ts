@@ -9,14 +9,14 @@ const func: DeployFunction = async function (hre: HardhatRuntimeEnvironment) {
   const { deployer } = await getNamedAccounts();
   if (!deployer) throw new Error("deployer is undefined");
 
-  const helloWorld = await deploy("HelloWorld", {
+  const stateChange = await deploy("CheckMarksCMS", {
     from: deployer,
     log: true,
     autoMine: true,
   });
 
-  console.log("helloWorld deployed to:", helloWorld.address);
+  console.log("stateChange deployed to:", stateChange.address);
 };
 
 export default func;
-func.tags = ["MockCompliancePropertyManager"];
+func.tags = ["CheckMarksCMS"];

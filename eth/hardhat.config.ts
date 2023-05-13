@@ -65,6 +65,14 @@ const config: HardhatUserConfig = {
       url: "https://ava-testnet.public.blastapi.io/ext/bc/C/rpc",
       accounts: accounts("fuji"),
     },
+    mumbai: {
+      url: "https://rpc-mumbai.maticvigil.com",
+      accounts: accounts("mumbai"),
+    },
+    optimism_goerli: {
+      url: "https://endpoints.omniatech.io/v1/op/goerli/public",
+      accounts: accounts("optimism_goerli"),
+    },
   }),
   paths: {
     sources: "contracts",

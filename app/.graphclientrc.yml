@@ -1,0 +1,6 @@
+# .graphclientrc.yml
+sources:
+  - name: checkmarkscms
+    handler:
+      graphql:
+        endpoint: https://api.thegraph.com/subgraphs/name/grmkris/checkmarkscms
