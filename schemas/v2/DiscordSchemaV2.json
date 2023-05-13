@@ -85,7 +85,6 @@
         "accountCreationDate",
         "email",
         "verified",
-        "guilds"
       ],
       "properties": {
         "id": {
