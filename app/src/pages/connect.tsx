@@ -1,22 +1,22 @@
 const Connect = () => {
   return (
-    <>
-      <div className="hero min-h-screen bg-primary">
-        <div className=" ">
-          <h1 className="text-center text-5xl text-accent">Checkmarcks</h1>
-        </div>
-      </div>
-      <div className="hero min-h-screen bg-base-200">
-        <div className="hero-content flex-col lg:flex-row ">
-          <h1 className="text-center text-5xl text-accent">
+    <div
+      className="hero min-h-screen"
+      style={{
+        backgroundImage: `url("/images/stock/photo-1507358522600-9f71e620c44e.jpg")`,
+      }}
+    >
+      <div className="hero-overlay bg-base-100"></div>
+      <div className="hero-content text-center text-neutral-content">
+        <div className="max-w-md">
+          <h1 className="mb-5 text-5xl text-accent">
             Get your verified credentials here
           </h1>
-          <button className="btn-primary btn mt-8 text-center ">
-            Connect your wallet
-          </button>
+
+          <button className="btn-primary btn">connect your wallet</button>
         </div>
       </div>
-    </>
+    </div>
   );
 };
 
