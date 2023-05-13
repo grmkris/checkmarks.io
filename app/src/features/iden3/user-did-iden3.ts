@@ -73,16 +73,21 @@ export const getUserDID = async (config: { username: string }) => {
 
   const byteEncoder = new TextEncoder();
 
-  const seedPhrase: Uint8Array = byteEncoder.encode(
+  /*
+  const seedPhrase1: Uint8Array = byteEncoder.encode(
     "seedseedseedseedseedseedseedseed"
   );
+   */
+  // TODO fix this.. is not safe xD
+  const seedPhrase2: Uint8Array = byteEncoder.encode(
+    config.username.slice(0, 32)
+  );
 
-  console.log("getUserDID - Create Identity:", config);
   const { did, credential } = await wallet.createIdentity({
     method: DidMethod.Iden3,
     blockchain: Blockchain.Polygon,
     networkId: NetworkId.Mumbai,
-    seed: seedPhrase,
+    seed: seedPhrase2,
     revocationOpts: {
       type: CredentialStatusType.Iden3ReverseSparseMerkleTreeProof,
       baseUrl: "http://rhs.com/node",

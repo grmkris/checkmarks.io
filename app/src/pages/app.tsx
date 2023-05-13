@@ -1,8 +1,7 @@
 import { Layout } from "../features/Layout";
 import { ToggleTheme } from "../features/ToggleTheme";
 import { useUser } from "@clerk/nextjs";
-import { useQuery } from "@tanstack/react-query";
-import { getUserDID } from "../features/user-did-iden3";
+import { useIden3DID } from "../features/iden3/useIden3DID";
 
 const ConnectedAccounts = () => {
   const { user } = useUser();
@@ -17,14 +16,9 @@ const ConnectedAccounts = () => {
 };
 
 export default function App() {
-  const identity = useQuery({
-    queryKey: ["identity"],
-    queryFn: async () => {
-      return getUserDID({
-        username: "test",
-      });
-    },
-  });
+  const did = useIden3DID();
+
+  console.log(did.data?.did.toString());
   return (
     <Layout>
       <div className="container mx-auto flex min-h-screen max-w-4xl flex-col items-center justify-center bg-base-100">
