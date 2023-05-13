@@ -1,4 +1,5 @@
-import { useModalStore } from "./useModalStore";
+import { SocialNames, useModalStore } from "./useModalStore";
+import { ICredential, ModalContent } from "../../components/ModalContent";
 
 export const FacebookModal = () => {
   const { data, close } = useModalStore((state) => ({
@@ -6,20 +7,24 @@ export const FacebookModal = () => {
     close: state.closeModal,
   }));
 
+  const creds: ICredential[] = [
+    {
+      text: "Number of friend ",
+      action: () => {},
+    },
+    {
+      text: "Number of post",
+      action: () => {},
+    },
+    {
+      text: "Number of likes ",
+      action: () => {},
+    },
+  ];
   return (
-    <>
-      <h3 className="text-lg font-bold">
-        Congratulations random Internet user! {data?.HelloWorldView1?.name}
-      </h3>
-      <p className="py-4">
-        You are selected for a chance to get one year of subscription to use
-        Wikipedia for free!
-      </p>
-      <div className="modal-action">
-        <button className="btn" onClick={() => close()}>
-          Close
-        </button>
-      </div>
-    </>
+    <ModalContent
+      title={SocialNames.Facebook.toUpperCase()}
+      credentials={creds}
+    />
   );
 };

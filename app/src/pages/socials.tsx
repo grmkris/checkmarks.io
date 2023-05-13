@@ -9,7 +9,7 @@ const Socials = () => {
   const router = useRouter();
 
   const socialsButtons: Social[] = [
-    { name: SocialNames.Facebok },
+    { name: SocialNames.Facebook },
     { name: SocialNames.Twitter },
     { name: SocialNames.Reddit },
     { name: SocialNames.Discord },
