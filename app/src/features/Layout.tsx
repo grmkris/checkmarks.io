@@ -6,13 +6,46 @@ import Head from "next/head";
 import { CheckmarkIcon } from "../components/svg/CheckmarkIcon";
 import { ProfileSVG } from "../components/svg/ProfileSVG";
 import { MenuButtonSVG } from "../components/svg/MenuButtonSVG";
+import { useWeb2Web3Selector } from "./web2Web3SelectorStore";
+import clsx from "clsx";
 
 const Header = () => {
+  const { selected, setSelected } = useWeb2Web3Selector((state) => state);
+
+  const web2Classes = clsx(
+    "tab-lifted tab",
+    selected === "web2" ? "tab-active" : ""
+  );
+
+  const web3Classes = clsx(
+    "tab-lifted tab",
+    selected === "web3" ? "tab-active" : ""
+  );
   return (
-    <div className="flex flex-nowrap ">
+    <div className="flex flex-col flex-nowrap">
       <h1 className="mt-8 align-middle text-5xl font-extrabold tracking-tight text-white sm:text-[5rem]">
         <CheckmarkIcon></CheckmarkIcon>
       </h1>
+      <div className="tabs">
+        <a
+          className={web2Classes}
+          onClick={() => {
+            console.log("clicked");
+            setSelected("web2");
+          }}
+        >
+          Web2
+        </a>
+        <a
+          className={web3Classes}
+          onClick={() => {
+            console.log("clicked");
+            setSelected("web3");
+          }}
+        >
+          Web3
+        </a>
+      </div>
     </div>
   );
 };
