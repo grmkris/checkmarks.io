@@ -3,8 +3,8 @@
   "type": "object",
   "$metadata": {
     "uris": {
-      "jsonLdContext": "https://raw.githubusercontent.com/grmkris/checkmarks.io/main/schemas/v2/GithubCredentialsV3.json",
-      "jsonSchema": "https://raw.githubusercontent.com/grmkris/checkmarks.io/main/schemas/v2/GithubSchemaV3.json"
+      "jsonLdContext": "https://raw.githubusercontent.com/grmkris/checkmarks.io/main/schemas/v2/GithubCredentialsV4.json",
+      "jsonSchema": "https://raw.githubusercontent.com/grmkris/checkmarks.io/main/schemas/v2/GithubSchemaV4.json"
     }
   },
   "required": [
@@ -82,24 +82,24 @@
       "required": [
         "login",
         "id",
+        "node_id",
         "avatar_url",
         "url",
         "html_url",
-        "repos_url",
+        "type",
         "name",
-        "email",
+        "bio",
         "public_repos",
         "followers",
         "following",
-        "created_at"
+        "created_at",
+        "updated_at"
       ],
       "properties": {
         "login": {
-          "title": "Github Login",
           "type": "string"
         },
         "github_id": {
-          "title": "Github ID",
           "type": "integer"
         },
         "avatar_url": {
@@ -114,16 +114,8 @@
           "type": "string",
           "format": "uri"
         },
-        "repos_url": {
-          "type": "string",
-          "format": "uri"
-        },
         "name": {
           "type": "string"
-        },
-        "email": {
-          "type": "string",
-          "format": "email"
         },
         "public_repos": {
           "type": "integer"
@@ -136,7 +128,7 @@
         },
         "created_at": {
           "type": "string",
-          "format": "date-time"
+          "format": "date"
         }
       }
     }
