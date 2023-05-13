@@ -13,12 +13,12 @@ const Header = () => {
   const { selected, setSelected } = useWeb2Web3Selector((state) => state);
 
   const web2Classes = clsx(
-    "tab-lifted tab",
+    "tab-bordered tab",
     selected === "web2" ? "tab-active" : ""
   );
 
   const web3Classes = clsx(
-    "tab-lifted tab",
+    "tab-bordered tab",
     selected === "web3" ? "tab-active" : ""
   );
   return (
@@ -30,20 +30,30 @@ const Header = () => {
         <a
           className={web2Classes}
           onClick={() => {
-            console.log("clicked");
             setSelected("web2");
           }}
         >
-          Web2
+          <span
+            className={
+              (selected === "web2" && "text-accent") || "text-secondary"
+            }
+          >
+            web 2
+          </span>
         </a>
         <a
           className={web3Classes}
           onClick={() => {
-            console.log("clicked");
             setSelected("web3");
           }}
         >
-          Web3
+          <span
+            className={
+              (selected === "web3" && "text-accent") || "text-secondary"
+            }
+          >
+            web 3
+          </span>
         </a>
       </div>
     </div>
