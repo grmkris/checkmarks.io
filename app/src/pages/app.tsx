@@ -1,4 +1,3 @@
-import { Layout } from "../features/Layout";
 import { ToggleTheme } from "../features/ToggleTheme";
 import { useUser } from "@clerk/nextjs";
 import { useIden3DID } from "../features/iden3/useIden3DID";
@@ -20,7 +19,7 @@ export default function App() {
 
   console.log(did.data?.did.toString());
   return (
-    <Layout>
+    <div>
       <div className="container mx-auto flex min-h-screen max-w-4xl flex-col items-center justify-center bg-base-100">
         <div className="container flex flex-col items-center justify-center gap-12 px-4 py-16 ">
           <ConnectedAccounts />
@@ -28,6 +27,6 @@ export default function App() {
           Imagine lots of cool stuff here
         </div>
       </div>
-    </Layout>
+    </div>
   );
 }

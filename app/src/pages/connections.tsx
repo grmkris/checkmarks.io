@@ -1,5 +1,4 @@
 import { Clerk } from "../features/Clerk";
-import { Layout } from "../features/Layout";
 import { useState } from "react";
 import { Sismo } from "../features/Sismo";
 import clsx from "clsx";
@@ -18,33 +17,31 @@ export default function Connections() {
   );
 
   return (
-    <Layout>
-      <div className="container mx-auto flex min-h-screen max-w-4xl flex-col items-center justify-center bg-base-100">
-        <div className="container flex flex-col items-center justify-center gap-12 px-4 py-16 ">
-          <div className="tabs">
-            <a
-              className={web2Classes}
-              onClick={() => {
-                console.log("clicked");
-                setSelectedTab("web2");
-              }}
-            >
-              Web2
-            </a>
-            <a
-              className={web3Classes}
-              onClick={() => {
-                console.log("clicked");
-                setSelectedTab("web3");
-              }}
-            >
-              Web3
-            </a>
-          </div>
+    <div className="container mx-auto flex min-h-screen max-w-4xl flex-col items-center justify-center bg-base-100">
+      <div className="container flex flex-col items-center justify-center gap-12 px-4 py-16 ">
+        <div className="tabs">
+          <a
+            className={web2Classes}
+            onClick={() => {
+              console.log("clicked");
+              setSelectedTab("web2");
+            }}
+          >
+            Web2
+          </a>
+          <a
+            className={web3Classes}
+            onClick={() => {
+              console.log("clicked");
+              setSelectedTab("web3");
+            }}
+          >
+            Web3
+          </a>
         </div>
-        {selectedTab === "web2" && <Clerk />}
-        {selectedTab === "web3" && <Sismo />}
       </div>
-    </Layout>
+      {selectedTab === "web2" && <Clerk />}
+      {selectedTab === "web3" && <Sismo />}
+    </div>
   );
 }
