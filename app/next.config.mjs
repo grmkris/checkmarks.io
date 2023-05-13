@@ -19,23 +19,6 @@ const config = {
     defaultLocale: "en",
   },
   webpack: (config, options) => {
-    config.module.rules.push({
-      test: /\.mjs$/,
-      type: "javascript/auto",
-      use: [],
-    });
-    config.module.rules.push({
-      test: /\.m?[jt]sx?$/,
-      enforce: "pre",
-      use: ["source-map-loader"],
-    });
-    config.module.rules.push({
-      test: /\.m?[jt]sx?$/,
-      resolve: {
-        fullySpecified: false,
-      },
-    });
-    config.ignoreWarnings = [/parse source map/];
     config.experiments = { asyncWebAssembly: true };
 
     for (const rule of config.module.rules) {

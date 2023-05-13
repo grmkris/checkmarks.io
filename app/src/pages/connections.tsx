@@ -1,4 +1,3 @@
-import { ToggleTheme } from "../features/ToggleTheme";
 import { Clerk } from "../features/Clerk";
 import { Layout } from "../features/Layout";
 import { useState } from "react";
