@@ -184,8 +184,8 @@ export const createAirStackVC = async (config: {
   const vc = await generateVC({
     body: {
       credentialSchema:
-        "https://raw.githubusercontent.com/grmkris/checkmarks.io/main/schemas/airstackV3/AirStackSchema.json",
-      type: "AirStackCredentialV3",
+        "https://raw.githubusercontent.com/grmkris/checkmarks.io/main/schemas/airstackV4/AirStackSchema.json",
+      type: "AirStackCredentialV4",
       credentialSubject: {
         numberOfNfts: config.numberOfNfts.toString(),
         ensName: config.ensName,
@@ -205,8 +205,8 @@ export const createLensVC = async (config: { id: string; lensId: string }) => {
   const vc = await generateVC({
     body: {
       credentialSchema:
-        "https://raw.githubusercontent.com/grmkris/checkmarks.io/main/schemas/lensV6/LensSchema.json",
-      type: "LensCredentialV6",
+        "https://raw.githubusercontent.com/grmkris/checkmarks.io/main/schemas/lensV7/LensSchema.json",
+      type: "LensCredentialV7",
       credentialSubject: {
         handle: config.lensId,
       },

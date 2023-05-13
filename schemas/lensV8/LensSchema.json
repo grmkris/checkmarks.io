@@ -3,8 +3,8 @@
   "type": "object",
   "$metadata": {
     "uris": {
-      "jsonLdContext": "https://raw.githubusercontent.com/grmkris/checkmarks.io/main/schemas/airstackV4/AirStackCredentials.json",
-      "jsonSchema": "https://raw.githubusercontent.com/grmkris/checkmarks.io/main/schemas/airstackV4/AirStackSchema.json"
+      "jsonLdContext": "https://raw.githubusercontent.com/grmkris/checkmarks.io/main/schemas/lensV8/LensCredentials.json",
+      "jsonSchema": "https://raw.githubusercontent.com/grmkris/checkmarks.io/main/schemas/lensV8/LensSchema.json"
     }
   },
   "required": [
@@ -64,15 +64,12 @@
     },
     "credentialSubject": {
       "type": "object",
-      "required": [],
       "properties": {
-        "numberOfNfts": {
-          "type": "string"
-        },
-        "ensName": {
+        "handle": {
           "type": "string"
         }
-      }
+      },
+      "required": ["handle"]
     }
   }
 }

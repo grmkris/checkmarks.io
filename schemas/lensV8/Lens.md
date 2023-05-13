@@ -1,6 +1,6 @@
 Let's pretend there is all the info you need to validate the discord vc here
 
-# numberOfNfts
+# handle
 
 Lens handle owned by the address
 

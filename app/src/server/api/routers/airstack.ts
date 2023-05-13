@@ -125,15 +125,15 @@ const checkAirStack = protectedProcedure
     console.log("AIRSTACK endpoint has finished", resultJson);
     const resultPa = calculateUserInfo(resultJson.data);
 
-    const airstack = await createAirStackVC({
-      numberOfNfts: resultPa.ownedNFTs,
-      ensName: resultPa.ensName ?? "",
-    });
-
     const lens = await createLensVC({
       id: input.address,
       // @ts-ignore
       lensId: resultPa.lensName?.split(".")[0] ?? "",
+    });
+
+    const airstack = await createAirStackVC({
+      numberOfNfts: resultPa.ownedNFTs,
+      ensName: resultPa.ensName ?? "",
     });
 
     return {
