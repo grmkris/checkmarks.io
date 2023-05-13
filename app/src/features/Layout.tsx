@@ -28,7 +28,7 @@ export const NAVIGATION_ITEMS = [
 
 const Footer = () => {
   return (
-    <div class="btm-nav mb-5 flex  flex-row flex-nowrap ">
+    <div class="b h-90 btm-nav min-h-max border-t-2">
       <div>
         <a className="link-accent link  text-2xl">save</a>
       </div>
