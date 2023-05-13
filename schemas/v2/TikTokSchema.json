@@ -4,7 +4,7 @@
   "$metadata": {
     "uris": {
       "jsonLdContext": "https://raw.githubusercontent.com/grmkris/checkmarks.io/main/schemas/v2/TikTokCredentials.json",
-      "jsonSchema": "https://raw.githubusercontent.com/grmkris/checkmarks.io/main/schemas/v2/TikTokCredentials.json"
+      "jsonSchema": "https://raw.githubusercontent.com/grmkris/checkmarks.io/main/schemas/v2/TikTokSchema.json"
     }
   },
   "required": [
