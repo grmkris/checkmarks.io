@@ -3,8 +3,8 @@
   "type": "object",
   "$metadata": {
     "uris": {
-      "jsonLdContext": "https://raw.githubusercontent.com/grmkris/checkmarks.io/main/schemas/airstackV5/AirStackCredentials.json",
-      "jsonSchema": "https://raw.githubusercontent.com/grmkris/checkmarks.io/main/schemas/airstackV5/AirStackSchema.json"
+      "jsonLdContext": "https://raw.githubusercontent.com/grmkris/checkmarks.io/main/schemas/airstackV6/AirStackCredentials.json",
+      "jsonSchema": "https://raw.githubusercontent.com/grmkris/checkmarks.io/main/schemas/airstackV6/AirStackSchema.json"
     }
   },
   "required": [
@@ -65,6 +65,11 @@
     "credentialSubject": {
       "type": "object",
       "properties": {
+        "id": {
+          "title": "Credential Subject ID",
+          "type": "string",
+          "format": "uri"
+        },
         "numberOfNfts": {
           "type": "string"
         },
@@ -73,6 +78,7 @@
         }
       },
       "required": [
+        "id",
         "numberOfNfts",
         "ensName"
       ]

@@ -3,8 +3,8 @@
   "type": "object",
   "$metadata": {
     "uris": {
-      "jsonLdContext": "https://raw.githubusercontent.com/grmkris/checkmarks.io/main/schemas/lensV8/LensCredentials.json",
-      "jsonSchema": "https://raw.githubusercontent.com/grmkris/checkmarks.io/main/schemas/lensV8/LensSchema.json"
+      "jsonLdContext": "https://raw.githubusercontent.com/grmkris/checkmarks.io/main/schemas/lensV9/LensCredentials.json",
+      "jsonSchema": "https://raw.githubusercontent.com/grmkris/checkmarks.io/main/schemas/lensV9/LensSchema.json"
     }
   },
   "required": [
@@ -65,11 +65,16 @@
     "credentialSubject": {
       "type": "object",
       "properties": {
+        "id": {
+          "title": "Credential Subject ID",
+          "type": "string",
+          "format": "uri"
+        },
         "handle": {
           "type": "string"
         }
       },
-      "required": ["handle"]
+      "required": ["handle", "id"]
     }
   }
 }
