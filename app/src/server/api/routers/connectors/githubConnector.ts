@@ -6,7 +6,7 @@ import { createGithubVC } from "../../../vc/generateVCs";
 
 export const githubConnector = protectedProcedure
   .input(DidSchema)
-  .query(async ({ ctx, input }) => {
+  .mutation(async ({ ctx, input }) => {
     console.table("Github connection has started");
     const user = await clerkClient.users.getUser(ctx.auth?.userId);
 

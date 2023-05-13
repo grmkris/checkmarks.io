@@ -5,7 +5,7 @@ import { DidSchema } from "../../../vc/polygon-id-node";
 
 export const twitterConnector = protectedProcedure
   .input(DidSchema)
-  .query(async ({ ctx }) => {
+  .mutation(async ({ ctx }) => {
     console.table("Discord connection has started");
     const user = await clerkClient.users.getUser(ctx.auth?.userId);
 

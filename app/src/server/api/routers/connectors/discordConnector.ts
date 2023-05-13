@@ -7,7 +7,7 @@ import { DidSchema } from "../../../vc/polygon-id-node";
 
 export const discordConnector = protectedProcedure
   .input(DidSchema)
-  .query(async ({ ctx, input }) => {
+  .mutation(async ({ ctx, input }) => {
     const user = await clerkClient.users.getUser(ctx.auth?.userId);
 
     // TODO make sure user is the same as the one in the did

@@ -12,7 +12,9 @@ export const env = createEnv({
     CLERK_SECRET_KEY: z.string(),
     NODE_ENV: z.enum(["development", "test", "production"]),
     POLYGON_ID_NODE_API_KEY: z.string(),
-    NEXT_PUBLIC_SISMO_APP_ID: z.string()
+    NEXT_PUBLIC_SISMO_APP_ID: z.string(),
+    PINATA_API_KEY: z.string(),
+    PINATA_API_SECRET: z.string(),
   },
 
   /**
@@ -34,6 +36,8 @@ export const env = createEnv({
     NODE_ENV: process.env.NODE_ENV,
     NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY: process.env.NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY,
     POLYGON_ID_NODE_API_KEY: process.env.POLYGON_ID_NODE_API_KEY,
-    NEXT_PUBLIC_SISMO_APP_ID: process.env.NEXT_PUBLIC_SISMO_APP_ID
+    NEXT_PUBLIC_SISMO_APP_ID: process.env.NEXT_PUBLIC_SISMO_APP_ID,
+    PINATA_API_KEY: process.env.PINATA_API_KEY,
+    PINATA_API_SECRET: process.env.PINATA_API_SECRET,
   },
 });

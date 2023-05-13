@@ -1,10 +1,11 @@
 import { Clerk } from "../features/Clerk";
-import { useState } from "react";
 import { Sismo } from "../features/Sismo";
 import clsx from "clsx";
+import { useRouter } from "next/router";
 
 export default function Connections() {
-  const [selectedTab, setSelectedTab] = useState<"web2" | "web3">("web2");
+  const router = useRouter();
+  const selectedTab = router.query.tab || "web2";
 
   const web2Classes = clsx(
     "tab-lifted tab",
@@ -16,6 +17,13 @@ export default function Connections() {
     selectedTab === "web3" ? "tab-active" : ""
   );
 
+  const handleTabChange = (tab: string) => {
+    void router.push({
+      pathname: router.pathname,
+      query: { ...router.query, tab },
+    });
+  };
+
   return (
     <div className="container mx-auto flex min-h-screen max-w-4xl flex-col items-center justify-center bg-base-100">
       <div className="container flex flex-col items-center justify-center gap-12 px-4 py-16 ">
@@ -24,7 +32,7 @@ export default function Connections() {
             className={web2Classes}
             onClick={() => {
               console.log("clicked");
-              setSelectedTab("web2");
+              handleTabChange("web2");
             }}
           >
             Web2
@@ -33,7 +41,7 @@ export default function Connections() {
             className={web3Classes}
             onClick={() => {
               console.log("clicked");
-              setSelectedTab("web3");
+              handleTabChange("web3");
             }}
           >
             Web3

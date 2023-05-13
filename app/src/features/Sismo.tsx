@@ -12,6 +12,8 @@ export const sismoConnectConfig: SismoConnectClientConfig = {
 
 export const Sismo = () => {
   const receiveProofsMutation = api.sismo.receiveProofs.useMutation();
+
+  console.log("sismoVC", JSON.stringify(receiveProofsMutation.data));
   return (
     <div>
       <SismoConnectButton
@@ -20,6 +22,7 @@ export const Sismo = () => {
           authType: AuthType.VAULT,
         }}
         onResponse={async (response: SismoConnectResponse) => {
+          console.log("response", response);
           const bakendResponse = receiveProofsMutation.mutate({
             text: response,
           });

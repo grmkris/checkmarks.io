@@ -151,3 +151,27 @@ export const createTikTokVC = async (config: {
   console.log(`tiktokCredId: ${id}`);
   return await getVcContent(id);
 };
+
+export const createSismoVaultVC = async (config: {
+  id: string;
+  vaultId: string;
+}) => {
+  console.log("creating sismo vault vc", config);
+  const vc = await generateVC({
+    body: {
+      credentialSchema:
+        "https://raw.githubusercontent.com/grmkris/checkmarks.io/main/schemas/sismo/SismoSchema.json",
+      type: "SismoVaultCredential",
+      credentialSubject: {
+        id: config.id,
+        vaultId: config.vaultId,
+      },
+    },
+  });
+
+  const id = vc?.id;
+  console.log(`sismoVaultCred:`, vc);
+  if (!id) throw new Error("No sismo vault credential id found");
+  console.log(`sismoVaultCredId: ${id}`);
+  return await getVcContent(id);
+};
