@@ -1,18 +1,18 @@
 import { useRouter } from "next/router";
-import { useModalStore } from "../features/modals/useModalStore";
+import { SocialNames, useModalStore } from "../features/modals/useModalStore";
 
 interface Social {
-  name: string;
+  name: SocialNames;
 }
 
 const Socials = () => {
   const router = useRouter();
 
   const socialsButtons: Social[] = [
-    { name: "Facebook" },
-    { name: "Twitter" },
-    { name: "Reddit" },
-    { name: "Discord" },
+    { name: SocialNames.Facebok },
+    { name: SocialNames.Twitter },
+    { name: SocialNames.Reddit },
+    { name: SocialNames.Discord },
   ];
 
   const openModal = useModalStore((state) => state.openModal);
@@ -27,7 +27,7 @@ const Socials = () => {
               <div key={index} className="py-2">
                 <button
                   onClick={() =>
-                    openModal({ data: undefined, view: "HelloWorldView2" })
+                    openModal({ data: undefined, view: social.name })
                   }
                   className="btn-primary btn w-80"
                 >

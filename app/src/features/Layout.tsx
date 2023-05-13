@@ -28,7 +28,7 @@ export const NAVIGATION_ITEMS = [
 
 const Footer = () => {
   return (
-    <div className="btm-nav bg-accent p-2">
+    <div class="b h-90 btm-nav min-h-max border-t-2">
       <div>
         <a className="link-accent link  text-2xl">save</a>
       </div>

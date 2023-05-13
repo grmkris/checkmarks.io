@@ -1,6 +1,10 @@
+import { useRouter } from "next/router";
+
 export const ProfileSVG = () => {
+  const router = useRouter();
   return (
     <svg
+      onClick={() => router.push("/socials")}
       width="59"
       height="59"
       viewBox="0 0 59 59"

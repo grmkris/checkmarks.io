@@ -2,6 +2,13 @@ import { create } from "zustand";
 
 export const APP_MODALS_ID = "app-modals";
 
+export enum SocialNames {
+  Facebok = "Facebok",
+  Twitter = "Twitter",
+  Reddit = "Reddit",
+  Discord = "Discord",
+}
+
 interface ModalData {
   HelloWorldView1?: {
     name: string;
@@ -13,9 +20,9 @@ interface ModalData {
 
 export interface IModalStore {
   open: boolean;
-  view?: "HelloWorldView1" | "HelloWorldView2";
+  view?: SocialNames;
   data?: ModalData;
-  openModal: (props: { view: IModalStore["view"]; data?: ModalData }) => void;
+  openModal: (props: { view: SocialNames; data?: ModalData }) => void;
   closeModal: () => void;
 }
 
