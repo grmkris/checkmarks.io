@@ -1,6 +1,5 @@
 import { createTRPCRouter, protectedProcedure } from "../trpc";
 import { z } from "zod";
-import { SISMO_APP_ID } from "../../../../commons/commons";
 import {
   AuthRequest,
   AuthType,
@@ -9,9 +8,10 @@ import {
   SismoConnectServerConfig,
   SismoConnectVerifiedResult,
 } from "@sismo-core/sismo-connect-server";
+import { env } from "../../../env.mjs";
 
 export const config: SismoConnectServerConfig = {
-  appId: SISMO_APP_ID,
+  appId: env.NEXT_PUBLIC_SISMO_APP_ID,
 };
 
 const sismoConnect = SismoConnect(config);

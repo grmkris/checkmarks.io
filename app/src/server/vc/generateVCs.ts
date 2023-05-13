@@ -46,6 +46,7 @@ export const createGithubVC = async (config: {
   followers: number;
   following: number;
 }) => {
+  console.log("createGithubVCs", config);
   const vc = await generateVC({
     body: {
       credentialSchema:
@@ -66,6 +67,7 @@ export const createGithubVC = async (config: {
       },
     },
   });
+  console.log("createGithubVC - vcs", vc);
   const id = vc?.id;
   if (!id) throw new Error("No github credential id found");
   console.log(`githubCredId: ${id}`);
@@ -91,7 +93,7 @@ export const createDiscordVC = async (config: {
     body: {
       credentialSchema:
         "https://raw.githubusercontent.com/grmkris/checkmarks.io/main/schemas/v2/DiscordSchema.json",
-      type: "DiscordGeneralCredential",
+      type: "DiscordGeneralCredentialV2",
       credentialSubject: {
         id: config.id,
         username: config.username,
@@ -102,6 +104,7 @@ export const createDiscordVC = async (config: {
       },
     },
   });
+  console.log("createDiscordVC - vcs", vc);
   const id = vc?.id;
   if (!id) throw new Error("No discord credential id found");
   console.log(`discordCredId: ${id}`);
@@ -123,6 +126,7 @@ export const createTikTokVC = async (config: {
   following_count: number;
   likes_count: number;
 }) => {
+  console.log("creating tiktok vc", config);
   const vc = await generateVC({
     body: {
       credentialSchema:
@@ -147,6 +151,7 @@ export const createTikTokVC = async (config: {
   });
 
   const id = vc?.id;
+  console.log(`tiktokCred:`, vc);
   if (!id) throw new Error("No tiktok credential id found");
   console.log(`tiktokCredId: ${id}`);
   return await getVcContent(id);

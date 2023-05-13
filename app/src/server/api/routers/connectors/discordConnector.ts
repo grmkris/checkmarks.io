@@ -1,8 +1,9 @@
 import { clerkClient } from "@clerk/nextjs";
 import discord from "discord-oauth2";
 import { protectedProcedure } from "../../trpc";
-import { DidSchema } from "../did";
+
 import { createDiscordVC } from "../../../vc/generateVCs";
+import { DidSchema } from "../../../vc/polygon-id-node";
 
 export const discordConnector = protectedProcedure
   .input(DidSchema)
@@ -24,18 +25,18 @@ export const discordConnector = protectedProcedure
     return createDiscordVC({
       id: input.did,
       username: discordUser.username,
-      guilds: guilds.map((guild) => {
-        return {
-          guildId: guild.id,
-          guildFeatures: guild.features,
-          guildIcon: guild.icon ?? "",
-          guildName: guild.name,
-          guildOwner: guild.owner ?? false,
-          guildPermissions: guild.permissions?.toString() ?? "",
-        };
-      }),
       accountCreationDate: "2010-12-31", // TODO: get this from discord
       email: discordUser.email ?? "",
       verified: discordUser.verified ?? false,
+      guilds: guilds.map((guild) => {
+        return {
+          id: guild.id,
+          name: guild.name,
+          permissions: guild.permissions?.toString() ?? "",
+          icon: guild.icon ?? "",
+          owner: guild.owner ?? false,
+          features: guild.features ?? [],
+        };
+      }),
     });
   });

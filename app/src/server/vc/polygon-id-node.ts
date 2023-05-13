@@ -1,4 +1,5 @@
 import { env } from "../../env.mjs";
+import { z } from "zod";
 
 const schemas = {
   twitter:
@@ -38,3 +39,9 @@ export const getVcContent = async (vcId: string) => {
 };
 
 export const getVcQRCode = async (vcId: string) => {};
+
+export const DidSchema = z.object({
+  did: z
+    .string()
+    .describe("Subject DID from useIden3DID hook -> did.data?.did.toString()"),
+});

@@ -1,8 +1,7 @@
 import { clerkClient } from "@clerk/nextjs";
 import { protectedProcedure } from "../../trpc";
 import { createTwitterVC } from "../../../vc/generateVCs";
-import { getVcContent } from "../../../vc/polygon-id-node";
-import { DidSchema } from "../did";
+import { DidSchema } from "../../../vc/polygon-id-node";
 
 export const twitterConnector = protectedProcedure
   .input(DidSchema)

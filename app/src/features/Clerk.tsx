@@ -3,6 +3,7 @@ import {
   ClerkLoaded,
   ClerkLoading,
   RedirectToSignIn,
+  SignIn,
   SignUp,
   useAuth,
   UserButton,
@@ -20,15 +21,7 @@ export const Clerk = () => {
         <Loading />
       </ClerkLoading>
 
-      <ClerkLoaded>
-        <UserProfile
-          additionalOAuthScopes={{
-            discord: ["guilds", "guilds.members.read"],
-            github: ["read:user"],
-            tiktok: ["user.info.basic"],
-          }}
-        />
-      </ClerkLoaded>
+      <ClerkLoaded></ClerkLoaded>
     </div>
   );
 };

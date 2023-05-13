@@ -1,7 +1,7 @@
 import { clerkClient } from "@clerk/nextjs";
 import { Octokit } from "octokit";
 import { protectedProcedure } from "../../trpc";
-import { DidSchema } from "../did";
+import { DidSchema } from "../../../vc/polygon-id-node";
 import { createGithubVC } from "../../../vc/generateVCs";
 
 export const githubConnector = protectedProcedure
@@ -27,7 +27,7 @@ export const githubConnector = protectedProcedure
       },
     });
 
-    console.table("Github connection has finished");
+    console.log("Github connection has finished", ghUser?.data);
     return createGithubVC({
       id: input.did,
       avatar_url: ghUser.data.avatar_url,

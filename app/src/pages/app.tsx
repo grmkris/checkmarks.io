@@ -9,7 +9,7 @@ const ConnectedAccounts = () => {
   return (
     <div>
       {user?.externalAccounts.map((acc, index) => {
-        return <div key={index}>{JSON.stringify(acc)}</div>;
+        return <div key={index}>{JSON.stringify(acc.provider)}</div>;
       })}
     </div>
   );
