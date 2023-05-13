@@ -1,6 +1,6 @@
 import { SismoConnectServerConfig } from "@sismo-core/sismo-connect-server";
-import { SISMO_APP_ID } from "../../../commons/commons";
+import { env } from "../../env.mjs";
 
 const config: SismoConnectServerConfig = {
-  appId: SISMO_APP_ID,
+  appId: env.NEXT_PUBLIC_SISMO_APP_ID,
 };

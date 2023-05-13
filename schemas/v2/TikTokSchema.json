@@ -3,8 +3,8 @@
   "type": "object",
   "$metadata": {
     "uris": {
-      "jsonLdContext": "https://raw.githubusercontent.com/grmkris/checkmarks.io/main/schemas/TwitterCredentials.json",
-      "jsonSchema": "https://raw.githubusercontent.com/grmkris/checkmarks.io/main/schemas/TwitterSchema.json"
+      "jsonLdContext": "https://raw.githubusercontent.com/grmkris/checkmarks.io/main/schemas/v2/TikTokCredentials.json",
+      "jsonSchema": "https://raw.githubusercontent.com/grmkris/checkmarks.io/main/schemas/v2/TikTokSchema.json"
     }
   },
   "required": [
@@ -80,22 +80,52 @@
     "credentialSubject": {
       "type": "object",
       "required": [
-        "id",
-        "username",
-        "accountCreationDate"
+        "open_id",
+        "display_name",
+        "avatar_url",
+        "profile_deep_link"
       ],
       "properties": {
-        "id": {
+        "open_id": {
           "title": "Credential Subject ID",
+          "type": "string"
+        },
+        "union_id": {
+          "type": "string"
+        },
+        "avatar_url": {
           "type": "string",
           "format": "uri"
         },
-        "username": {
+        "avatar_url_100": {
+          "type": "string",
+          "format": "uri"
+        },
+        "avatar_large_url": {
+          "type": "string",
+          "format": "uri"
+        },
+        "display_name": {
           "type": "string"
         },
-        "accountCreationDate": {
+        "bio_description": {
+          "type": "string"
+        },
+        "profile_deep_link": {
           "type": "string",
-          "format": "date"
+          "format": "uri"
+        },
+        "is_verified": {
+          "type": "boolean"
+        },
+        "follower_count": {
+          "type": "integer"
+        },
+        "following_count": {
+          "type": "integer"
+        },
+        "likes_count": {
+          "type": "integer"
         }
       }
     }

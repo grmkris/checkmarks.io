@@ -18,5 +18,22 @@ const config = {
     locales: ["en"],
     defaultLocale: "en",
   },
+  webpack: (config, options) => {
+    config.experiments = { asyncWebAssembly: true };
+
+    for (const rule of config.module.rules) {
+      if (rule.oneOf) {
+        for (const oneOf of rule.oneOf) {
+          if (oneOf.type === "asset/resource") {
+            oneOf.exclude = Array.from(oneOf.exclude);
+            oneOf.exclude.push(/\.wasm$/);
+          }
+        }
+      }
+    }
+    config.resolve.fallback = { fs: false };
+    config.experiments = { asyncWebAssembly: true, layers: true };
+    return config;
+  },
 };
 export default config;

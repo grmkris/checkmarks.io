@@ -11,12 +11,9 @@ import {
   useUser,
 } from "@clerk/nextjs";
 import { Loading } from "../components/Loading";
+import { useState } from "react";
 
 export const Clerk = () => {
-  const { signIn } = useSignIn();
-  const { user } = useUser();
-  const { signOut } = useAuth();
-
   return (
     <div>
       <ClerkLoading>
@@ -24,9 +21,6 @@ export const Clerk = () => {
       </ClerkLoading>
 
       <ClerkLoaded>
-        <button className={"btn-accent btn"} onClick={() => signOut()}>
-          Sign Out
-        </button>
         <UserProfile
           additionalOAuthScopes={{
             discord: ["guilds", "guilds.members.read"],

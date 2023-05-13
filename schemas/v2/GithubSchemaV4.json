@@ -3,8 +3,8 @@
   "type": "object",
   "$metadata": {
     "uris": {
-      "jsonLdContext": "https://raw.githubusercontent.com/grmkris/checkmarks.io/main/schemas/TwitterCredentials.json",
-      "jsonSchema": "https://raw.githubusercontent.com/grmkris/checkmarks.io/main/schemas/TwitterSchema.json"
+      "jsonLdContext": "https://raw.githubusercontent.com/grmkris/checkmarks.io/main/schemas/v2/GithubCredentialsV4.json",
+      "jsonSchema": "https://raw.githubusercontent.com/grmkris/checkmarks.io/main/schemas/v2/GithubSchemaV4.json"
     }
   },
   "required": [
@@ -80,20 +80,53 @@
     "credentialSubject": {
       "type": "object",
       "required": [
+        "login",
         "id",
-        "username",
-        "accountCreationDate"
+        "node_id",
+        "avatar_url",
+        "url",
+        "html_url",
+        "type",
+        "name",
+        "bio",
+        "public_repos",
+        "followers",
+        "following",
+        "created_at",
+        "updated_at"
       ],
       "properties": {
-        "id": {
-          "title": "Credential Subject ID",
+        "login": {
+          "type": "string"
+        },
+        "github_id": {
+          "type": "integer"
+        },
+        "avatar_url": {
           "type": "string",
           "format": "uri"
         },
-        "username": {
+        "url": {
+          "type": "string",
+          "format": "uri"
+        },
+        "html_url": {
+          "type": "string",
+          "format": "uri"
+        },
+        "name": {
           "type": "string"
         },
-        "accountCreationDate": {
+        "public_repos": {
+          "type": "integer"
+        },
+        "followers": {
+          "type": "integer"
+        },
+        "following": {
+          "type": "integer"
+        },
+        "created_at": {
           "type": "string",
           "format": "date"
         }

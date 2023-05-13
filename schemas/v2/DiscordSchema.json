@@ -3,8 +3,8 @@
   "type": "object",
   "$metadata": {
     "uris": {
-      "jsonLdContext": "https://raw.githubusercontent.com/grmkris/checkmarks.io/main/schemas/TwitterCredentials.json",
-      "jsonSchema": "https://raw.githubusercontent.com/grmkris/checkmarks.io/main/schemas/TwitterSchema.json"
+      "jsonLdContext": "https://raw.githubusercontent.com/grmkris/checkmarks.io/main/schemas/v2/DiscordCredentials.json",
+      "jsonSchema": "https://raw.githubusercontent.com/grmkris/checkmarks.io/main/schemas/v2/DiscordSchema.json"
     }
   },
   "required": [
@@ -82,7 +82,10 @@
       "required": [
         "id",
         "username",
-        "accountCreationDate"
+        "accountCreationDate",
+        "email",
+        "verified",
+        "guilds"
       ],
       "properties": {
         "id": {
@@ -96,6 +99,43 @@
         "accountCreationDate": {
           "type": "string",
           "format": "date"
+        },
+        "email": {
+          "type": "string",
+          "format": "email"
+        },
+        "verified": {
+          "type": "boolean"
+        },
+        "guilds": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": ["id", "name", "permissions"],
+            "properties": {
+              "id": {
+                "type": "string"
+              },
+              "name": {
+                "type": "string"
+              },
+              "permissions": {
+                "type": "string"
+              },
+              "icon": {
+                "type": "string"
+              },
+              "owner": {
+                "type": "boolean"
+              },
+              "features": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              }
+            }
+          }
         }
       }
     }
