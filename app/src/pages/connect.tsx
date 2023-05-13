@@ -1,6 +1,4 @@
-const UpperContainer = () => <>UpperContainer</>;
-const LowerContainer = () => <>LowerContainer</>;
-const Landing = () => {
+const Connect = () => {
   return (
     <>
       <div className="hero min-h-screen bg-primary">
@@ -22,4 +20,4 @@ const Landing = () => {
   );
 };
 
-export default Landing;
+export default Connect;
