@@ -16,7 +16,7 @@ export const AppModals = () => {
         htmlFor={APP_MODALS_ID}
         className="modal modal-bottom cursor-pointer sm:modal-middle "
       >
-        <label className="modal-box relative bg-neutral" htmlFor="">
+        <label className="modal-box relative bg-neutral" htmlFor={""}>
           <ModalViews />
         </label>
       </label>

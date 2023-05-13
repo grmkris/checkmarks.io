@@ -1,6 +1,7 @@
 import { create } from "zustand";
 
 export const APP_MODALS_ID = "app-modals";
+export const APP_MODALS_ID_OUTSIDE = "app-modals-outside";
 
 export enum SocialNames {
   Facebook = "Facebook",

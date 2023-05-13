@@ -28,9 +28,9 @@ export const NAVIGATION_ITEMS = [
 
 const Footer = () => {
   return (
-    <div class="b h-90 btm-nav min-h-max border-t-2">
+    <div className="b h-90 btm-nav min-h-max border-t-2">
       <div>
-        <a className="link-accent link  text-2xl">save</a>
+        <a className="link-accent link text-2xl hover:link-warning">save</a>
       </div>
       <div>
         <ProfileSVG></ProfileSVG>

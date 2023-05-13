@@ -10,6 +10,7 @@ export const ProfileSVG = () => {
       viewBox="0 0 59 59"
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
+      className="rounded-full hover:bg-accent/5"
     >
       <circle cx="29.5" cy="29.5" r="28.5" stroke="#4760EE" strokeWidth="2" />
       <path

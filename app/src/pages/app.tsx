@@ -27,7 +27,7 @@ export default function App() {
   });
 
   const ipfs = useFetchIpfsFile({
-    ipfsHash: sg.data?.data.stateChanges[0].data,
+    ipfsHash: sg.data?.data.stateChanges[0]?.data,
   });
 
   console.log(did.data?.did.toString());
