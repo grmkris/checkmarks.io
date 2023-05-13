@@ -1,0 +1,144 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "type": "object",
+  "$metadata": {
+    "uris": {
+      "jsonLdContext": "https://raw.githubusercontent.com/grmkris/checkmarks.io/main/schemas/v2/GithubCredentials.json",
+      "jsonSchema": "https://raw.githubusercontent.com/grmkris/checkmarks.io/main/schemas/v2/GithubSchema.json"
+    }
+  },
+  "required": [
+    "@context",
+    "id",
+    "type",
+    "issuanceDate",
+    "credentialSubject",
+    "credentialSchema",
+    "credentialStatus",
+    "issuer"
+  ],
+  "properties": {
+    "@context": {
+      "type": [
+        "string",
+        "array",
+        "object"
+      ]
+    },
+    "id": {
+      "type": "string"
+    },
+    "type": {
+      "type": [
+        "string",
+        "array"
+      ],
+      "items": {
+        "type": "string"
+      }
+    },
+    "issuer": {
+      "type": [
+        "string",
+        "object"
+      ],
+      "format": "uri",
+      "required": [
+        "id"
+      ],
+      "properties": {
+        "id": {
+          "type": "string",
+          "format": "uri"
+        }
+      }
+    },
+    "issuanceDate": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "expirationDate": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "credentialSchema": {
+      "type": "object",
+      "required": [
+        "id",
+        "type"
+      ],
+      "properties": {
+        "id": {
+          "type": "string",
+          "format": "uri"
+        },
+        "type": {
+          "type": "string"
+        }
+      }
+    },
+    "credentialSubject": {
+      "type": "object",
+      "required": [
+        "login",
+        "id",
+        "avatar_url",
+        "url",
+        "html_url",
+        "repos_url",
+        "name",
+        "email",
+        "public_repos",
+        "followers",
+        "following",
+        "created_at"
+      ],
+      "properties": {
+        "login": {
+          "title": "Github Login",
+          "type": "string"
+        },
+        "github_id": {
+          "title": "Github ID",
+          "type": "integer"
+        },
+        "avatar_url": {
+          "type": "string",
+          "format": "uri"
+        },
+        "url": {
+          "type": "string",
+          "format": "uri"
+        },
+        "html_url": {
+          "type": "string",
+          "format": "uri"
+        },
+        "repos_url": {
+          "type": "string",
+          "format": "uri"
+        },
+        "name": {
+          "type": "string"
+        },
+        "email": {
+          "type": "string",
+          "format": "email"
+        },
+        "public_repos": {
+          "type": "integer"
+        },
+        "followers": {
+          "type": "integer"
+        },
+        "following": {
+          "type": "integer"
+        },
+        "created_at": {
+          "type": "string",
+          "format": "date-time"
+        }
+      }
+    }
+  }
+}
