@@ -108,7 +108,7 @@ const getQueryString = (address: string) => {
 };
 
 const checkAirStack = protectedProcedure
-  .input(z.object({ address: z.string() }))
+  .input(z.object({ address: z.string(), did: z.string() }))
   .query(async ({ ctx, input }) => {
     console.log("AIRSTACK endpoint has started");
     const queryString = getQueryString(input.address);
@@ -125,15 +125,16 @@ const checkAirStack = protectedProcedure
     console.log("AIRSTACK endpoint has finished", resultJson);
     const resultPa = calculateUserInfo(resultJson.data);
 
-    const lens = await createLensVC({
-      id: input.address,
-      // @ts-ignore
-      lensId: resultPa.lensName?.split(".")[0] ?? "",
-    });
-
     const airstack = await createAirStackVC({
       numberOfNfts: resultPa.ownedNFTs,
       ensName: resultPa.ensName ?? "",
+      id: input.did,
+    });
+
+    const lens = await createLensVC({
+      id: input.did,
+      // @ts-ignore
+      lensId: resultPa.lensName?.split(".")[0] ?? "",
     });
 
     return {
