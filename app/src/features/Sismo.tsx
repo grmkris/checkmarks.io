@@ -5,18 +5,17 @@ import {
   SismoConnectResponse,
 } from "@sismo-core/sismo-connect-react";
 import { api } from "../utils/api";
-import { SISMO_APP_ID } from "../../commons/commons";
 
 export const sismoConnectConfig: SismoConnectClientConfig = {
-  appId: SISMO_APP_ID,
+  appId: "0x4198a24d0345151a12db749863ed3a39",
 };
 
-const Sismo = () => {
+export const Sismo = () => {
   const receiveProofsMutation = api.sismo.receiveProofs.useMutation();
   return (
     <div>
       <SismoConnectButton
-        appId={SISMO_APP_ID}
+        appId={"0x4198a24d0345151a12db749863ed3a39"}
         auth={{
           authType: AuthType.VAULT,
         }}
@@ -30,5 +29,3 @@ const Sismo = () => {
     </div>
   );
 };
-
-export default Sismo;

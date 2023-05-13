@@ -18,5 +18,39 @@ const config = {
     locales: ["en"],
     defaultLocale: "en",
   },
+  webpack: (config, options) => {
+    config.module.rules.push({
+      test: /\.mjs$/,
+      type: "javascript/auto",
+      use: [],
+    });
+    config.module.rules.push({
+      test: /\.m?[jt]sx?$/,
+      enforce: "pre",
+      use: ["source-map-loader"],
+    });
+    config.module.rules.push({
+      test: /\.m?[jt]sx?$/,
+      resolve: {
+        fullySpecified: false,
+      },
+    });
+    config.ignoreWarnings = [/parse source map/];
+    config.experiments = { asyncWebAssembly: true };
+
+    for (const rule of config.module.rules) {
+      if (rule.oneOf) {
+        for (const oneOf of rule.oneOf) {
+          if (oneOf.type === "asset/resource") {
+            oneOf.exclude = Array.from(oneOf.exclude);
+            oneOf.exclude.push(/\.wasm$/);
+          }
+        }
+      }
+    }
+    config.resolve.fallback = { fs: false };
+    config.experiments = { asyncWebAssembly: true, layers: true };
+    return config;
+  },
 };
 export default config;
