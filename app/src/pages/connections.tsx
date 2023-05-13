@@ -1,7 +1,5 @@
 import { Clerk } from "../features/Clerk";
 import { ConnectWithSismo } from "../features/ConnectWithSismo";
-import clsx from "clsx";
-import { useRouter } from "next/router";
 import { ConnectWithLens } from "../features/ConnectWithLens";
 import { ConnectWithAirStack } from "../features/ConnectWithAirStack";
 import { useWeb2Web3Selector } from "../features/web2Web3SelectorStore";
