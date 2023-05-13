@@ -77,6 +77,56 @@ const CheckmarkIcon = () => {
   );
 };
 
+const ProfileSVG = () => {
+  return (
+    <svg
+      width="59"
+      height="59"
+      viewBox="0 0 59 59"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <circle cx="29.5" cy="29.5" r="28.5" stroke="#4760EE" stroke-width="2" />
+      <path
+        fill-rule="evenodd"
+        clip-rule="evenodd"
+        d="M38.2282 38.7349C40.5503 36.5466 42 33.4426 42 30C42 23.3726 36.6274 18 30 18C23.3726 18 18 23.3726 18 30C18 33.4426 19.4497 36.5466 21.7718 38.7349C23.9201 40.7593 26.8152 42 30 42C33.1848 42 36.0799 40.7593 38.2282 38.7349ZM22.794 37.1536C24.4857 35.0434 27.0851 33.6923 30 33.6923C32.9149 33.6923 35.5143 35.0434 37.206 37.1536C35.3665 39.0065 32.8172 40.1538 30 40.1538C27.1828 40.1538 24.6335 39.0065 22.794 37.1536ZM34.6154 26.3077C34.6154 28.8567 32.549 30.9231 30 30.9231C27.451 30.9231 25.3846 28.8567 25.3846 26.3077C25.3846 23.7587 27.451 21.6923 30 21.6923C32.549 21.6923 34.6154 23.7587 34.6154 26.3077Z"
+        fill="#4760EE"
+      />
+    </svg>
+  );
+};
+
+const MenuButtonSVG = () => {
+  return (
+    <svg
+      width="59"
+      height="59"
+      viewBox="0 0 59 59"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <circle cx="29.5" cy="29.5" r="29.5" fill="#4760EE" />
+      <path
+        d="M22.6667 19C20.6416 19 19 20.6416 19 22.6667V25.4167C19 27.4417 20.6416 29.0833 22.6667 29.0833H25.4167C27.4417 29.0833 29.0833 27.4417 29.0833 25.4167V22.6667C29.0833 20.6416 27.4417 19 25.4167 19H22.6667Z"
+        fill="#EDEAE6"
+      />
+      <path
+        d="M34.5833 19C32.5583 19 30.9167 20.6416 30.9167 22.6667V25.4167C30.9167 27.4417 32.5583 29.0833 34.5833 29.0833H37.3333C39.3584 29.0833 41 27.4417 41 25.4167V22.6667C41 20.6416 39.3584 19 37.3333 19H34.5833Z"
+        fill="#EDEAE6"
+      />
+      <path
+        d="M22.6667 30.9167C20.6416 30.9167 19 32.5583 19 34.5833V37.3333C19 39.3584 20.6416 41 22.6667 41H25.4167C27.4417 41 29.0833 39.3584 29.0833 37.3333V34.5833C29.0833 32.5583 27.4417 30.9167 25.4167 30.9167H22.6667Z"
+        fill="#EDEAE6"
+      />
+      <path
+        d="M36.875 31.8333C36.875 31.3271 36.4646 30.9167 35.9583 30.9167C35.4521 30.9167 35.0417 31.3271 35.0417 31.8333V35.0417H31.8333C31.3271 35.0417 30.9167 35.4521 30.9167 35.9583C30.9167 36.4646 31.3271 36.875 31.8333 36.875H35.0417V40.0833C35.0417 40.5896 35.4521 41 35.9583 41C36.4646 41 36.875 40.5896 36.875 40.0833V36.875H40.0833C40.5896 36.875 41 36.4646 41 35.9583C41 35.4521 40.5896 35.0417 40.0833 35.0417H36.875V31.8333Z"
+        fill="#EDEAE6"
+      />
+    </svg>
+  );
+};
+
 const Header = () => {
   return (
     <div class="flex flex-nowrap ">
@@ -96,6 +146,22 @@ export const NAVIGATION_ITEMS = [
   </Link>,
 ];
 
+const Footer = () => {
+  return (
+    <div class="btm-nav mb-5 flex  flex-row flex-nowrap ">
+      <div>
+        <a className="link-accent link  text-2xl">save</a>
+      </div>
+      <div>
+        <ProfileSVG></ProfileSVG>
+      </div>
+      <div>
+        <MenuButtonSVG></MenuButtonSVG>
+      </div>
+    </div>
+  );
+};
+
 export const Layout = (props: { children: ReactNode }) => {
   const router = useRouter();
   return (
@@ -109,16 +175,8 @@ export const Layout = (props: { children: ReactNode }) => {
         <Header />
         <AppModals />
         {props.children}
-        {router.pathname !== "/" && <NavigationBottom />}
+        {<Footer />}
       </main>
-    </>
-  );
-};
-
-const NavigationBottom = () => {
-  return (
-    <>
-      <nav className="btm-nav">{NAVIGATION_ITEMS.map((item) => item)}</nav>
     </>
   );
 };
