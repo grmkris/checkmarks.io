@@ -6,7 +6,7 @@ dataSources:
     name: CheckMarksCMS
     network: mumbai
     source:
-      address: "0xD44E043225C15a717Fb0591805152E0ddfC87005"
+      address: "0xD779A710c2d58A3CC25B2bC9ec3A2e4Cc1132EcE"
       abi: CheckMarksCMS
       startBlock: 35550621
     mapping:
@@ -19,6 +19,6 @@ dataSources:
         - name: CheckMarksCMS
           file: ./abis/CheckMarksCMS.json
       eventHandlers:
-        - event: StateChange(address,bytes)
+        - event: StateChange(address,string)
           handler: handleStateChange
       file: ./src/check-marks-cms.ts

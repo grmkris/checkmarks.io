@@ -67,17 +67,17 @@ export class StateChange extends Entity {
     this.set("author", Value.fromBytes(value));
   }
 
-  get data(): Bytes {
+  get data(): string {
     let value = this.get("data");
     if (!value || value.kind == ValueKind.NULL) {
       throw new Error("Cannot return null for a required field.");
     } else {
-      return value.toBytes();
+      return value.toString();
     }
   }
 
-  set data(value: Bytes) {
-    this.set("data", Value.fromBytes(value));
+  set data(value: string) {
+    this.set("data", Value.fromString(value));
   }
 
   get blockNumber(): BigInt {

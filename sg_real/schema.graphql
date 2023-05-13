@@ -1,7 +1,7 @@
 type StateChange @entity(immutable: true) {
   id: Bytes!
   author: Bytes! # address
-  data: Bytes! # bytes
+  data: String! # bytes
   blockNumber: BigInt!
   blockTimestamp: BigInt!
   transactionHash: Bytes!

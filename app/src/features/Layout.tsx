@@ -9,7 +9,7 @@ import { MenuButtonSVG } from "../components/svg/MenuButtonSVG";
 
 const Header = () => {
   return (
-    <div class="flex flex-nowrap ">
+    <div className="flex flex-nowrap ">
       <h1 className="mt-8 align-middle text-5xl font-extrabold tracking-tight text-white sm:text-[5rem]">
         <CheckmarkIcon></CheckmarkIcon>
       </h1>
@@ -28,7 +28,7 @@ export const NAVIGATION_ITEMS = [
 
 const Footer = () => {
   return (
-    <div class="btm-nav mb-5 flex  flex-row flex-nowrap ">
+    <div className="btm-nav bg-accent p-2">
       <div>
         <a className="link-accent link  text-2xl">save</a>
       </div>

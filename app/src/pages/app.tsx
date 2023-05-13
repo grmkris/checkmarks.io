@@ -1,9 +1,9 @@
-import { ToggleTheme } from "../features/ToggleTheme";
 import { useUser } from "@clerk/nextjs";
 import { useIden3DID } from "../features/iden3/useIden3DID";
-import { api } from "../utils/api";
-import { useCredentialStore } from "../features/CredentialStore";
-import { useCheckmarksCmsSubgraph } from "../features/useSubgraph";
+
+import { PublishVCsButton } from "../features/cms/PublishToCmsButton";
+import { useCheckmarksCmsSubgraph } from "../features/cms/useSubgraph";
+import { useFetchIpfsFile } from "../features/cms/useFetchIpfsFile";
 
 const ConnectedAccounts = () => {
   const { user } = useUser();
@@ -18,32 +18,15 @@ const ConnectedAccounts = () => {
   );
 };
 
-function IpfsUploadButton() {
-  const ipfs = api.ipfsRouter.uploadIpfs.useMutation();
-  const creds = useCredentialStore((state) => state.credentials);
-
-  const handleUpload = async () => {
-    const data = await ipfs.mutateAsync({
-      creds: creds,
-    });
-    console.log("data", data);
-  };
-
-  return (
-    <div>
-      <button className={"btn"} onClick={handleUpload}>
-        Upload to IPFS
-      </button>
-      {ipfs.data && <div>{JSON.stringify(ipfs.data)}</div>}
-    </div>
-  );
-}
-
 export default function App() {
   const did = useIden3DID();
   const user = useUser();
   const sg = useCheckmarksCmsSubgraph({
     account: user?.user?.web3Wallets[0].web3Wallet,
+  });
+
+  const ipfs = useFetchIpfsFile({
+    ipfsHash: sg.data?.data.stateChanges[0].data,
   });
 
   console.log(did.data?.did.toString());
@@ -52,7 +35,7 @@ export default function App() {
       <div className="container mx-auto flex min-h-screen max-w-4xl flex-col items-center justify-center bg-base-100">
         <div className="container flex flex-col items-center justify-center gap-12 px-4 py-16 ">
           <ConnectedAccounts />
-          <IpfsUploadButton />
+          <PublishVCsButton />
           Imagine lots of cool stuff here
         </div>
       </div>
