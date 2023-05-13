@@ -84,27 +84,18 @@ export const createDiscordVC = async (config: {
   accountCreationDate: string;
   email: string;
   verified: boolean;
-  guilds: {
-    guildId: string;
-    guildName: string;
-    guildPermissions: string;
-    guildIcon: string;
-    guildOwner: boolean;
-    guildFeatures: string[];
-  }[];
 }) => {
   const vc = await generateVC({
     body: {
       credentialSchema:
-        "https://raw.githubusercontent.com/grmkris/checkmarks.io/main/schemas/v2/DiscordSchema.json",
-      type: "DiscordGeneralCredentialV2",
+        "https://raw.githubusercontent.com/grmkris/checkmarks.io/main/schemas/v4/DiscordSchemaV4.json",
+      type: "DiscordGeneralCredentialV3",
       credentialSubject: {
         id: config.id,
         username: config.username,
         accountCreationDate: config.accountCreationDate,
         email: config.email,
         verified: config.verified,
-        guilds: config.guilds,
       },
     },
   });

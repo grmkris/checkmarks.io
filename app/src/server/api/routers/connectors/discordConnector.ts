@@ -24,19 +24,9 @@ export const discordConnector = protectedProcedure
     const guilds = await oauth.getUserGuilds(disToken);
     return createDiscordVC({
       id: input.did,
-      username: discordUser.username,
+      username: "dfsd",
       accountCreationDate: "2010-12-31", // TODO: get this from discord
-      email: discordUser.email ?? "",
-      verified: discordUser.verified ?? false,
-      guilds: guilds.map((guild) => {
-        return {
-          id: guild.id,
-          name: guild.name,
-          permissions: guild.permissions?.toString() ?? "",
-          icon: guild.icon ?? "",
-          owner: guild.owner ?? false,
-          features: guild.features ?? [],
-        };
-      }),
+      email: "kristjan@grm.com",
+      verified: true,
     });
   });
