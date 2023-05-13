@@ -30,17 +30,6 @@ export default function App() {
     ipfsHash: sg.data?.data.stateChanges[0].data,
   });
 
-  const airStack = api.airstack.checkAirStack.useQuery(
-    {
-      address: user?.user?.web3Wallets[0].web3Wallet || "",
-      did: did.data?.did.toString() || "",
-    },
-    {
-      enabled:
-        !!user?.user?.web3Wallets[0].web3Wallet && !!did.data?.did.toString(),
-    }
-  );
-
   console.log(did.data?.did.toString());
   return (
     <div>
