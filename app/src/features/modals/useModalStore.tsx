@@ -3,7 +3,7 @@ import { create } from "zustand";
 export const APP_MODALS_ID = "app-modals";
 
 export enum SocialNames {
-  Facebok = "Facebok",
+  Facebook = "Facebook",
   Twitter = "Twitter",
   Reddit = "Reddit",
   Discord = "Discord",
