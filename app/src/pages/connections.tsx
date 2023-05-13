@@ -17,18 +17,7 @@ function Web3Creds() {
 }
 
 export default function Connections() {
-  const router = useRouter();
   const { selected, setSelected } = useWeb2Web3Selector((state) => state);
-
-  const web2Classes = clsx(
-    "tab-lifted tab",
-    selected === "web2" ? "tab-active" : ""
-  );
-
-  const web3Classes = clsx(
-    "tab-lifted tab",
-    selected === "web3" ? "tab-active" : ""
-  );
 
   return (
     <div className="container mx-auto flex min-h-screen max-w-4xl flex-col items-center justify-center bg-base-100">
