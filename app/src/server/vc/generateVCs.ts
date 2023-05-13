@@ -19,7 +19,7 @@ export const createTwitterVC = async (config: {
     body: {
       credentialSchema:
         "https://raw.githubusercontent.com/grmkris/checkmarks.io/main/schemas/v2/TwitterSchema.json",
-      type: "TwitterGeneralCredential",
+      type: "TwitterGeneralCredentialV2",
       credentialSubject: {
         id: config.id,
         username: config.username,
@@ -28,6 +28,7 @@ export const createTwitterVC = async (config: {
     },
   });
   const id = vc?.id;
+  console.log("createTwitterVC - vcs", vc);
   if (!id) throw new Error("No twitter credential id found");
   console.log(`twitterCredId: ${id}`);
   return await getVcContent(id);
@@ -47,15 +48,17 @@ export const createGithubVC = async (config: {
   following: number;
 }) => {
   console.log("createGithubVCs", config);
+  const date = new Date(config.created_at);
+  // YYYY-MM-DD
+  const formattedDate = "2010-12-31";
   const vc = await generateVC({
     body: {
       credentialSchema:
         "https://raw.githubusercontent.com/grmkris/checkmarks.io/main/schemas/v2/GithubSchemaV4.json",
-      type: "GithubGeneralCredential",
+      type: "GithubGeneralCredentialV4",
       credentialSubject: {
         id: config.id,
         login: config.login,
-        created_at: config.created_at,
         github_id: config.github_id,
         avatar_url: config.avatar_url,
         url: config.url,
@@ -64,6 +67,7 @@ export const createGithubVC = async (config: {
         public_repos: config.public_repos,
         followers: config.followers,
         following: config.following,
+        created_at: formattedDate,
       },
     },
   });
@@ -131,7 +135,7 @@ export const createTikTokVC = async (config: {
     body: {
       credentialSchema:
         "https://raw.githubusercontent.com/grmkris/checkmarks.io/main/schemas/v2/TikTokSchema.json",
-      type: "TikTokGeneralCredential",
+      type: "TikTokGeneralCredentialV2",
       credentialSubject: {
         id: config.id,
         open_id: config.open_id,

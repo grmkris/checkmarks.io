@@ -81,19 +81,14 @@
       "type": "object",
       "required": [
         "login",
-        "id",
-        "node_id",
+        "github_id",
         "avatar_url",
         "url",
         "html_url",
-        "type",
         "name",
-        "bio",
         "public_repos",
         "followers",
-        "following",
-        "created_at",
-        "updated_at"
+        "following"
       ],
       "properties": {
         "login": {
