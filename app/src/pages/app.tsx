@@ -4,6 +4,7 @@ import { useIden3DID } from "../features/iden3/useIden3DID";
 import { PublishVCsButton } from "../features/cms/PublishToCmsButton";
 import { useCheckmarksCmsSubgraph } from "../features/cms/useSubgraph";
 import { useFetchIpfsFile } from "../features/cms/useFetchIpfsFile";
+import { api } from "../utils/api";
 
 const ConnectedAccounts = () => {
   const { user } = useUser();
@@ -28,6 +29,15 @@ export default function App() {
   const ipfs = useFetchIpfsFile({
     ipfsHash: sg.data?.data.stateChanges[0].data,
   });
+
+  const airStack = api.airstack.checkAirStack.useQuery(
+    {
+      address: user?.user?.web3Wallets[0].web3Wallet || "",
+    },
+    {
+      enabled: !!user?.user?.web3Wallets[0].web3Wallet,
+    }
+  );
 
   console.log(did.data?.did.toString());
   return (

@@ -2,6 +2,7 @@ import { createTRPCRouter } from "./trpc";
 import { sismoRouter } from "./routers/sismo";
 import { didRouter } from "./routers/did";
 import { ipfsRouter } from "./routers/ipfs";
+import { airstack } from "./routers/airstack";
 
 /**
  * This is the primary router for your server.
@@ -12,6 +13,7 @@ export const appRouter = createTRPCRouter({
   did: didRouter,
   sismo: sismoRouter,
   ipfsRouter: ipfsRouter,
+  airstack: airstack,
 });
 
 // export type definition of API
