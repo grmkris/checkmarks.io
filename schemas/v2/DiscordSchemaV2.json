@@ -84,7 +84,7 @@
         "username",
         "accountCreationDate",
         "email",
-        "verified",
+        "verified"
       ],
       "properties": {
         "id": {
