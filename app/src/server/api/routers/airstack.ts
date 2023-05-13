@@ -1,5 +1,56 @@
 import { createTRPCRouter, protectedProcedure } from "../trpc";
 import { z } from "zod";
+import { createAirStackVC, createLensVC } from "../../vc/generateVCs";
+
+function calculateUserInfo(data: any) {
+  console.log("calculateUserInfo:", data);
+  const polygonData = data.polygon;
+  const ethereumData = data.ethereum;
+
+  let hasLensHandle = false;
+  let lensName = null;
+  let ownedNFTs = 0;
+  let hasENS = false;
+  let ensName = null;
+
+  const allData = [polygonData, ethereumData];
+
+  allData.forEach((blockchainData) => {
+    // Check if user has lens handle and get its name
+    blockchainData?.socials.forEach((social: any) => {
+      if (social.dappName.toLowerCase() === "lens") {
+        hasLensHandle = true;
+        lensName = social.profileName;
+      }
+    });
+
+    // Calculate number of owned NFTs
+    blockchainData?.tokenBalances.forEach((tokenBalance: any) => {
+      if (
+        tokenBalance.tokenType === "ERC721" ||
+        tokenBalance.tokenType === "ERC1155"
+      ) {
+        ownedNFTs += 1;
+      }
+    });
+
+    // Check if user has ENS and get its name
+    blockchainData?.domains.forEach((domain: any) => {
+      if (domain.dappName.toLowerCase() === "ens") {
+        hasENS = true;
+        ensName = domain.labelName;
+      }
+    });
+  });
+
+  return {
+    hasLensHandle,
+    lensName,
+    ownedNFTs,
+    hasENS,
+    ensName,
+  };
+}
 
 const getQueryString = (address: string) => {
   return `
@@ -11,9 +62,6 @@ const getQueryString = (address: string) => {
         }
       ) {
         addresses
-        tokenTransfers {
-          transactionHash
-        }
         tokenBalances {
           amount
           tokenType
@@ -28,6 +76,7 @@ const getQueryString = (address: string) => {
       id
       userId
       dappName
+      profileName
     }
       }
       ethereum: Wallet(
@@ -37,9 +86,6 @@ const getQueryString = (address: string) => {
         }
       ) {
         addresses
-        tokenTransfers {
-          transactionHash
-        }
         tokenBalances {
           amount
           tokenType
@@ -54,6 +100,7 @@ const getQueryString = (address: string) => {
       id
       userId
       dappName
+      profileName
     }
       }
     }
@@ -76,7 +123,23 @@ const checkAirStack = protectedProcedure
     });
     const resultJson = await result.json(); // get JSON response
     console.log("AIRSTACK endpoint has finished", resultJson);
-    return resultJson;
+    const resultPa = calculateUserInfo(resultJson.data);
+
+    const lens = await createLensVC({
+      id: input.address,
+      lensId: resultPa.lensName ?? "",
+    });
+
+    const airstack = await createAirStackVC({
+      id: input.address,
+      numberOfNfts: resultPa.ownedNFTs,
+      ensName: resultPa.ensName ?? "",
+    });
+
+    return {
+      airstack,
+      lens,
+    };
   });
 
 export const airstack = createTRPCRouter({

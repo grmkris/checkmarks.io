@@ -175,3 +175,48 @@ export const createSismoVaultVC = async (config: {
   console.log(`sismoVaultCredId: ${id}`);
   return await getVcContent(id);
 };
+
+export const createAirStackVC = async (config: {
+  id: string;
+  numberOfNfts: number;
+  ensName: string;
+}) => {
+  console.log("creating airStack vc", config);
+  const vc = await generateVC({
+    body: {
+      credentialSchema:
+        "https://raw.githubusercontent.com/grmkris/checkmarks.io/main/schemas/airstack/AirStackSchema.json",
+      type: "AirStackCredential",
+      credentialSubject: {
+        numberOfNfts: config.numberOfNfts,
+        ensName: config.ensName,
+      },
+    },
+  });
+
+  const id = vc?.id;
+  console.log(`airStackCred:`, vc);
+  if (!id) throw new Error("No airStack credential id found");
+  console.log(`airStackCredId: ${id}`);
+  return await getVcContent(id);
+};
+
+export const createLensVC = async (config: { id: string; lensId: string }) => {
+  console.log("creating lens vc", config);
+  const vc = await generateVC({
+    body: {
+      credentialSchema:
+        "https://raw.githubusercontent.com/grmkris/checkmarks.io/main/schemas/lensV4/LensSchema.json",
+      type: "LensCredential",
+      credentialSubject: {
+        lensId: config.lensId,
+      },
+    },
+  });
+
+  const id = vc?.id;
+  console.log(`lensCred:`, vc);
+  if (!id) throw new Error("No lens credential id found");
+  console.log(`lensCredId: ${id}`);
+  return await getVcContent(id);
+};
