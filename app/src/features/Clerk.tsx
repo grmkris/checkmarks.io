@@ -1,18 +1,5 @@
-import {
-  AuthenticateWithRedirectCallback,
-  ClerkLoaded,
-  ClerkLoading,
-  RedirectToSignIn,
-  SignIn,
-  SignUp,
-  useAuth,
-  UserButton,
-  UserProfile,
-  useSignIn,
-  useUser,
-} from "@clerk/nextjs";
+import { ClerkLoaded, ClerkLoading, UserProfile } from "@clerk/nextjs";
 import { Loading } from "../components/Loading";
-import { useState } from "react";
 
 export const Clerk = () => {
   return (
@@ -21,7 +8,15 @@ export const Clerk = () => {
         <Loading />
       </ClerkLoading>
 
-      <ClerkLoaded></ClerkLoaded>
+      <ClerkLoaded>
+        <UserProfile
+          additionalOAuthScopes={{
+            discord: ["guilds", "guilds.members.read"],
+            github: ["read:user"],
+            tiktok: ["user.info.basic"],
+          }}
+        />
+      </ClerkLoaded>
     </div>
   );
 };
