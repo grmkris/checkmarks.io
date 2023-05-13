@@ -19,7 +19,7 @@ export const TikTokModal = () => {
   ];
   return (
     <ModalContent
-      title={SocialNames.Discord.toUpperCase()}
+      title={SocialNames.TikTok.toUpperCase()}
       credentials={creds}
     />
   );

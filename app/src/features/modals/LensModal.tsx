@@ -18,9 +18,6 @@ export const LensModal = () => {
     },
   ];
   return (
-    <ModalContent
-      title={SocialNames.Discord.toUpperCase()}
-      credentials={creds}
-    />
+    <ModalContent title={SocialNames.Lens.toUpperCase()} credentials={creds} />
   );
 };
