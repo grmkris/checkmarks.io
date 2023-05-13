@@ -205,8 +205,8 @@ export const createLensVC = async (config: { id: string; lensId: string }) => {
   const vc = await generateVC({
     body: {
       credentialSchema:
-        "https://raw.githubusercontent.com/grmkris/checkmarks.io/main/schemas/lensV7/LensSchema.json",
-      type: "LensCredentialV7",
+        "https://raw.githubusercontent.com/grmkris/checkmarks.io/main/schemas/lensV8/LensSchema.json",
+      type: "LensCredentialV8",
       credentialSubject: {
         handle: config.lensId,
       },
