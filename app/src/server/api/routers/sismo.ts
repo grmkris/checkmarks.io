@@ -25,6 +25,10 @@ async function verifyResponse(sismoConnectResponse: SismoConnectResponse) {
       auths: [vaultAuth],
     }
   );
+  console.log("result:", result);
+  result.claims.forEach((claim) => {
+    console.log("claim:", claim);
+  });
   const vaultId = result.getUserId(AuthType.VAULT);
   console.log("vaultId:", vaultId);
 }
