@@ -88,8 +88,8 @@ export const createDiscordVC = async (config: {
   const vc = await generateVC({
     body: {
       credentialSchema:
-        "https://raw.githubusercontent.com/grmkris/checkmarks.io/main/schemas/v8/DiscordSchemaV8.json",
-      type: "DiscordGeneralCredentialV8",
+        "https://raw.githubusercontent.com/grmkris/checkmarks.io/main/schemas/v8/DiscordCredentialsV81Schema.json",
+      type: "DiscordGeneralCredentialV81",
       credentialSubject: {
         id: config.id,
         username: config.username,
