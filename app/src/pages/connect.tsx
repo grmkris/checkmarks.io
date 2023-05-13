@@ -1,4 +1,8 @@
+import { useRouter } from "next/router";
+
 const Connect = () => {
+  const router = useRouter();
+
   return (
     <div
       className="hero min-h-screen"
@@ -13,7 +17,12 @@ const Connect = () => {
             Get your verified credentials here
           </h1>
 
-          <button className="btn-primary btn">connect your wallet</button>
+          <button
+            className="btn-primary btn"
+            onClick={() => router.push("/connections#/web3-wallet ")}
+          >
+            connect your wallet
+          </button>
         </div>
       </div>
     </div>
