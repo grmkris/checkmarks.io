@@ -43,20 +43,30 @@ export default function Connections() {
           <a
             className={web2Classes}
             onClick={() => {
-              console.log("clicked");
               handleTabChange("web2");
             }}
           >
-            Web2
+            <span
+              className={
+                (selectedTab === "web2" && "text-accent") || "text-secondary"
+              }
+            >
+              web 2
+            </span>
           </a>
           <a
             className={web3Classes}
             onClick={() => {
-              console.log("clicked");
               handleTabChange("web3");
             }}
           >
-            Web3
+            <span
+              className={
+                (selectedTab === "web3" && "text-accent") || "text-secondary"
+              }
+            >
+              web 3
+            </span>
           </a>
         </div>
       </div>
