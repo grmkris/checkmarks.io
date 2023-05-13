@@ -12,7 +12,7 @@ import { env } from "../../../env.mjs";
 import { createSismoVaultVC } from "../../vc/generateVCs";
 
 export const config: SismoConnectServerConfig = {
-  appId: env.NEXT_PUBLIC_SISMO_APP_ID,
+  appId: "0x4198a24d0345151a12db749863ed3a39",
 };
 
 const sismoConnect = SismoConnect(config);
@@ -22,7 +22,7 @@ async function verifyResponse(config: {
   userId: string;
 }) {
   const vaultAuth: AuthRequest = { authType: AuthType.VAULT };
-  console.log("Verifying response");
+  console.log("Verifying response", config.sismoConnectResponse);
   const result: SismoConnectVerifiedResult = await sismoConnect.verify(
     config.sismoConnectResponse,
     {
@@ -41,10 +41,13 @@ async function verifyResponse(config: {
 }
 
 const receiveProofs = protectedProcedure
-  .input(z.object({ text: z.any() }))
+  .input(z.object({ text: z.any(), userId: z.string() }))
   .mutation(async ({ ctx, input }) => {
-    console.log("sismo proof endpoint has started");
-    const result = await verifyResponse(input.text);
+    console.log("sismo proof endpoint has started", input.text);
+    const result = await verifyResponse({
+      sismoConnectResponse: input.text,
+      userId: input.userId,
+    });
     console.log("sismo proof endpoint has finished", result);
     return result;
   });

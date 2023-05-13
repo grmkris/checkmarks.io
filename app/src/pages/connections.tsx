@@ -1,11 +1,23 @@
 import { Clerk } from "../features/Clerk";
-import { Sismo } from "../features/Sismo";
+import { ConnectWithSismo } from "../features/ConnectWithSismo";
 import clsx from "clsx";
 import { useRouter } from "next/router";
+import { ConnectWithLens } from "../features/ConnectWithLens";
+import { ConnectWithAirStack } from "../features/ConnectWithAirStack";
+
+function Web3Creds() {
+  return (
+    <div className={"flex flex-col space-y-4"}>
+      <ConnectWithLens />
+      <ConnectWithSismo />
+      <ConnectWithAirStack />
+    </div>
+  );
+}
 
 export default function Connections() {
   const router = useRouter();
-  const selectedTab = router.query.tab || "web2";
+  const selectedTab = router.query.tab || "web3";
 
   const web2Classes = clsx(
     "tab-lifted tab",
@@ -49,7 +61,7 @@ export default function Connections() {
         </div>
       </div>
       {selectedTab === "web2" && <Clerk />}
-      {selectedTab === "web3" && <Sismo />}
+      {selectedTab === "web3" && <Web3Creds />}
     </div>
   );
 }

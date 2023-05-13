@@ -7,6 +7,10 @@ export enum SocialNames {
   Twitter = "Twitter",
   Reddit = "Reddit",
   Discord = "Discord",
+  TikTok = "TikTok",
+  Lens = "Lens",
+  Sismo = "Sismo",
+  Onchain = "Onchain",
 }
 
 interface ModalData {

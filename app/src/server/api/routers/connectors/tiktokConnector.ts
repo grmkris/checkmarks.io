@@ -6,7 +6,7 @@ import { TRPCError } from "@trpc/server";
 
 export const tiktokConnector = protectedProcedure
   .input(DidSchema)
-  .mutation(async ({ ctx, input }) => {
+  .query(async ({ ctx, input }) => {
     const userId = ctx.auth?.userId;
     console.log("TikTok connection has started", userId, input.did);
     try {

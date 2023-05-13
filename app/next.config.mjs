@@ -18,6 +18,7 @@ const config = {
     locales: ["en"],
     defaultLocale: "en",
   },
+  transpilePackages: ['@lens-protocol/widgets-react'],
   webpack: (config, options) => {
     config.experiments = { asyncWebAssembly: true };
 

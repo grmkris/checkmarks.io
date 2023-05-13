@@ -13,6 +13,10 @@ const Socials = () => {
     { name: SocialNames.Twitter },
     { name: SocialNames.Reddit },
     { name: SocialNames.Discord },
+    { name: SocialNames.TikTok },
+    { name: SocialNames.Lens },
+    { name: SocialNames.Sismo },
+    { name: SocialNames.Onchain },
   ];
 
   const openModal = useModalStore((state) => state.openModal);
@@ -21,7 +25,7 @@ const Socials = () => {
     <div className="hero min-h-screen">
       <div className="hero-overlay bg-base-100"></div>
       <div className="hero-content text-center text-neutral-content">
-        <div class="flex flex-col">
+        <div className="flex flex-col">
           {socialsButtons.map((social, index) => {
             return (
               <div key={index} className="py-2">
