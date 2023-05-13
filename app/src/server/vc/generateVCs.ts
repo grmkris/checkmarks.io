@@ -177,7 +177,6 @@ export const createSismoVaultVC = async (config: {
 };
 
 export const createAirStackVC = async (config: {
-  id: string;
   numberOfNfts: number;
   ensName: string;
 }) => {
@@ -185,10 +184,10 @@ export const createAirStackVC = async (config: {
   const vc = await generateVC({
     body: {
       credentialSchema:
-        "https://raw.githubusercontent.com/grmkris/checkmarks.io/main/schemas/airstackV2/AirStackSchema.json",
-      type: "AirStackCredential",
+        "https://raw.githubusercontent.com/grmkris/checkmarks.io/main/schemas/airstackV3/AirStackSchema.json",
+      type: "AirStackCredentialV3",
       credentialSubject: {
-        numberOfNfts: config.numberOfNfts,
+        numberOfNfts: config.numberOfNfts.toString(),
         ensName: config.ensName,
       },
     },
@@ -206,10 +205,10 @@ export const createLensVC = async (config: { id: string; lensId: string }) => {
   const vc = await generateVC({
     body: {
       credentialSchema:
-        "https://raw.githubusercontent.com/grmkris/checkmarks.io/main/schemas/lensV5/LensSchema.json",
-      type: "LensCredential",
+        "https://raw.githubusercontent.com/grmkris/checkmarks.io/main/schemas/lensV6/LensSchema.json",
+      type: "LensCredentialV6",
       credentialSubject: {
-        lensId: config.lensId,
+        handle: config.lensId,
       },
     },
   });

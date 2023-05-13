@@ -126,14 +126,14 @@ const checkAirStack = protectedProcedure
     const resultPa = calculateUserInfo(resultJson.data);
 
     const airstack = await createAirStackVC({
-      id: input.address,
       numberOfNfts: resultPa.ownedNFTs,
       ensName: resultPa.ensName ?? "",
     });
 
     const lens = await createLensVC({
       id: input.address,
-      lensId: resultPa.lensName ?? "",
+      // @ts-ignore
+      lensId: resultPa.lensName?.split(".")[0] ?? "",
     });
 
     return {
