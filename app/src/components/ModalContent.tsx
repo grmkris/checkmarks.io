@@ -1,3 +1,5 @@
+import { QRCodeSVG } from "./svg/QRCodeSVG";
+
 export interface ICredential {
   text: string;
   action: () => void;
@@ -31,13 +33,13 @@ export const ModalContent = ({
   title: string;
   credentials: ICredential[];
 }) => {
-  console.log("credentials", credentials);
   return (
     <>
-      <div className={"flex content-center"}>
+      <div className={"flex flex-nowrap content-center"}>
         <h1 className="grow text-center  text-2xl font-bold text-primary">
           {title}
         </h1>
+        <QRCodeSVG />
       </div>
 
       {credentials.map((cred, index) => (
