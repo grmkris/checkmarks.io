@@ -3,8 +3,8 @@
   "type": "object",
   "$metadata": {
     "uris": {
-      "jsonLdContext": "https://raw.githubusercontent.com/grmkris/checkmarks.io/main/schemas/v7/DiscordCredentialsV7.json",
-      "jsonSchema": "https://raw.githubusercontent.com/grmkris/checkmarks.io/main/schemas/v7/DiscordSchemaV7.json"
+      "jsonLdContext": "https://raw.githubusercontent.com/grmkris/checkmarks.io/main/schemas/v8/DiscordCredentialsV8.json",
+      "jsonSchema": "https://raw.githubusercontent.com/grmkris/checkmarks.io/main/schemas/v8/DiscordSchemaV8.json"
     }
   },
   "required": [
@@ -65,7 +65,6 @@
     "credentialSubject": {
       "type": "object",
       "required": [
-        "id",
         "username",
         "accountCreationDate",
         "email",
