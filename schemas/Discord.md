@@ -5,7 +5,7 @@ Let's pretend there is all the info you need to validate the discord vc here
 username represents person username as string value
 
 ```
-  "username": gtala
+  "username": GuilleTala
 ```
 
 # accountCreationDate
