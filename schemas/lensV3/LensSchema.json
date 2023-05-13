@@ -3,8 +3,8 @@
   "type": "object",
   "$metadata": {
     "uris": {
-      "jsonLdContext": "https://raw.githubusercontent.com/grmkris/checkmarks.io/main/schemas/lensV2/LensCredentials.json",
-      "jsonSchema": "https://raw.githubusercontent.com/grmkris/checkmarks.io/main/schemas/lensV2/LensSchema.json"
+      "jsonLdContext": "https://raw.githubusercontent.com/grmkris/checkmarks.io/main/schemas/lensV3/LensCredentials.json",
+      "jsonSchema": "https://raw.githubusercontent.com/grmkris/checkmarks.io/main/schemas/lensV3/LensSchema.json"
     }
   },
   "required": [
@@ -70,7 +70,7 @@
       "properties": {
         "handle": {
           "type": "string"
-        },
+        }
       }
     }
   }
