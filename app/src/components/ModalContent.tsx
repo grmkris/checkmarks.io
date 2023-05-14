@@ -2,6 +2,7 @@ import { QRCodeSVG as QRCodeIcon } from "./svg/QRCodeSVG";
 import { useModalStore } from "../features/modals/useModalStore";
 import { QRCodeSVG } from "qrcode.react";
 import { useState } from "react";
+import { useRouter } from "next/router";
 
 export interface ICredential {
   text: string | JSX.Element;
@@ -15,15 +16,18 @@ const CredentialSelector = ({
   text: string | JSX.Element;
   action: any;
 }) => {
+  const isPublicPage = useRouter().pathname.includes("public");
   return (
     <div className="form-control">
       <label className="label cursor-pointer">
         <span className="label-text text-primary">{text}</span>
-        <input
-          onChange={action}
-          type="checkbox"
-          className="checkbox-primary checkbox"
-        />
+        {!isPublicPage && (
+          <input
+            onChange={action}
+            type="checkbox"
+            className="checkbox-primary checkbox"
+          />
+        )}
       </label>
     </div>
   );
@@ -39,6 +43,8 @@ export const ModalContent = ({
   const { close } = useModalStore((state) => ({
     close: state.closeModal,
   }));
+
+  const isPublicPage = useRouter().pathname.includes("public");
   const [showQr, setShowQr] = useState(false);
   return (
     <>
@@ -46,20 +52,22 @@ export const ModalContent = ({
         <h1 className="grow text-center  text-2xl font-bold text-primary">
           {title}
         </h1>
-        <div
-          className={"cursor-pointer hover:bg-accent"}
-          onClick={() => {
-            console.log("clicked");
-            setShowQr(!showQr);
-          }}
-        >
-          <QRCodeIcon />
-        </div>
+        {!isPublicPage && (
+          <div
+            className={"cursor-pointer hover:bg-accent"}
+            onClick={() => {
+              console.log("clicked");
+              setShowQr(!showQr);
+            }}
+          >
+            <QRCodeIcon />
+          </div>
+        )}
       </div>
       {showQr && (
         <>
-          <div className="mb-2 flex justify-center text-secondary">
-            <p>Export the verifiable credential to VC compatible wallet:</p>
+          <div className="mb-2 flex justify-center text-primary">
+            <p>Export the verifiable credential to VC compatible wallet</p>
           </div>
           <div className="flex justify-center">
             <QRCodeSVG
@@ -72,7 +80,9 @@ export const ModalContent = ({
       )}
       {!showQr && (
         <>
-          <p className={"text-secondary"}>Public information:</p>
+          <p className={"text-center font-bold text-primary"}>
+            Public information:
+          </p>
           {credentials.map((cred, index) => (
             <CredentialSelector
               key={index}

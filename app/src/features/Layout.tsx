@@ -8,7 +8,6 @@ import { MenuButtonSVG } from "../components/svg/MenuButtonSVG";
 import { useWeb2Web3Selector } from "./web2Web3SelectorStore";
 import clsx from "clsx";
 import { usePublishVCs } from "./cms/PublishToCmsButton";
-import { useRouter } from "next/router";
 import { useCredentialStore } from "./CredentialStore";
 import { useModalStore } from "./modals/useModalStore";
 import { useRouter } from "next/router";
@@ -35,7 +34,7 @@ const Header = () => {
           <CheckmarkIcon></CheckmarkIcon>
         </h1>
       </div>
-      {router.pathname !== "/" &&  isPublicPage ? null : (
+      {router.pathname !== "/" && isPublicPage ? null : (
         <div className="tabs">
           <a
             className={web2Classes}
@@ -80,9 +79,8 @@ const Footer = () => {
   const router = useRouter();
   const isPublicPage = router.pathname.includes("public");
 
-  const router = useRouter();
-
   useEffect(() => {
+    // for demo purposes I want to display save button everytime we change creds stored in device storage
     console.log("useEffect");
     setShowSave(true);
   }, [creds]);

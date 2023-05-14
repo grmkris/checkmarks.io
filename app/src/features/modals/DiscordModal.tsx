@@ -7,7 +7,7 @@ import { useCredentialStore } from "../CredentialStore";
 export const DataLabel = (props: { label: string; data: string }) => {
   return (
     <a>
-      {props.label}: <a className={"text-secondary"}>{props.data}</a>
+      {props.label}: <a className={"font-bold text-primary"}>{props.data}</a>
     </a>
   );
 };
