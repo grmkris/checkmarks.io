@@ -1,6 +1,4 @@
 import type { ReactNode } from "react";
-import Link from "next/link";
-import { HomeIcon, InboxStackIcon } from "@heroicons/react/24/outline";
 import { AppModals } from "./modals/AppModals";
 import Head from "next/head";
 import { CheckmarkIcon } from "../components/svg/CheckmarkIcon";
@@ -9,9 +7,11 @@ import { MenuButtonSVG } from "../components/svg/MenuButtonSVG";
 import { useWeb2Web3Selector } from "./web2Web3SelectorStore";
 import clsx from "clsx";
 import { usePublishVCs } from "./cms/PublishToCmsButton";
+import { useRouter } from "next/router";
 
 const Header = () => {
   const { selected, setSelected } = useWeb2Web3Selector((state) => state);
+  const router = useRouter();
 
   const web2Classes = clsx(
     "tab-bordered tab text-2xl",
@@ -29,69 +29,68 @@ const Header = () => {
           <CheckmarkIcon></CheckmarkIcon>
         </h1>
       </div>
-      <div className="tabs">
-        <a
-          className={web2Classes}
-          onClick={() => {
-            setSelected("web2");
-          }}
-        >
-          <span
-            className={
-              (selected === "web2" && "text-accent") || "text-secondary"
-            }
+      {router.pathname !== "/" && (
+        <div className="tabs">
+          <a
+            className={web2Classes}
+            onClick={() => {
+              setSelected("web2");
+            }}
           >
-            web 2
-          </span>
-        </a>
-        <a
-          className={web3Classes}
-          onClick={() => {
-            setSelected("web3");
-          }}
-        >
-          <span
-            className={
-              (selected === "web3" && "text-accent") || "text-secondary"
-            }
+            <span
+              className={
+                (selected === "web2" && "text-accent") || "text-secondary"
+              }
+            >
+              web 2
+            </span>
+          </a>
+          <a
+            className={web3Classes}
+            onClick={() => {
+              setSelected("web3");
+            }}
           >
-            web 3
-          </span>
-        </a>
-      </div>
+            <span
+              className={
+                (selected === "web3" && "text-accent") || "text-secondary"
+              }
+            >
+              web 3
+            </span>
+          </a>
+        </div>
+      )}
     </>
   );
 };
 
-export const NAVIGATION_ITEMS = [
-  <Link href="/app" key={0}>
-    <HomeIcon className={"h-5 w-5"} />{" "}
-  </Link>,
-  <Link href="/connections" key={1}>
-    <InboxStackIcon className={"h-5 w-5"} />
-  </Link>,
-];
-
 const Footer = () => {
   const publishVCs = usePublishVCs();
+  const router = useRouter();
+
   return (
-    <div className="b h-90 btm-nav min-h-max border-t-2">
-      <div>
-        <a
-          className="link-accent link text-2xl hover:link-warning"
-          onClick={() => {
-            publishVCs.mutate();
-          }}
-        >
-          save
-        </a>
-      </div>
-      <div>
-        <ProfileSVG></ProfileSVG>
-      </div>
-      <div>
-        <MenuButtonSVG></MenuButtonSVG>
-      </div>
+    <div className="b h-90 btm-nav min-h-max border-t-2 py-2">
+      {router.pathname !== "/" && (
+        <>
+          <div>
+            <a
+              className="link-accent link text-2xl hover:link-warning"
+              onClick={() => {
+                publishVCs.mutate();
+              }}
+            >
+              save
+            </a>
+          </div>
+          <div>
+            <ProfileSVG></ProfileSVG>
+          </div>
+          <div>
+            <MenuButtonSVG></MenuButtonSVG>
+          </div>
+        </>
+      )}
     </div>
   );
 };
