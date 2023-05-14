@@ -12,9 +12,12 @@ import { usePublishVCs } from "./cms/PublishToCmsButton";
 import { useCredentialStore } from "./CredentialStore";
 import { useEffect, useState } from "react";
 import { useModalStore } from "./modals/useModalStore";
+import { useRouter } from "next/router";
 
 const Header = () => {
   const { selected, setSelected } = useWeb2Web3Selector((state) => state);
+  const router = useRouter();
+  const isPublicPage = router.pathname.includes("public");
 
   const web2Classes = clsx(
     "tab-bordered tab text-2xl",
@@ -32,59 +35,58 @@ const Header = () => {
           <CheckmarkIcon></CheckmarkIcon>
         </h1>
       </div>
-      <div className="tabs">
-        <a
-          className={web2Classes}
-          onClick={() => {
-            setSelected("web2");
-          }}
-        >
-          <span
-            className={
-              (selected === "web2" && "text-accent") || "text-secondary"
-            }
+      {isPublicPage ? null : (
+        <div className="tabs">
+          <a
+            className={web2Classes}
+            onClick={() => {
+              setSelected("web2");
+            }}
           >
-            web 2
-          </span>
-        </a>
-        <a
-          className={web3Classes}
-          onClick={() => {
-            setSelected("web3");
-          }}
-        >
-          <span
-            className={
-              (selected === "web3" && "text-accent") || "text-secondary"
-            }
+            <span
+              className={
+                (selected === "web2" && "text-accent") || "text-secondary"
+              }
+            >
+              web 2
+            </span>
+          </a>
+          <a
+            className={web3Classes}
+            onClick={() => {
+              setSelected("web3");
+            }}
           >
-            web 3
-          </span>
-        </a>
-      </div>
+            <span
+              className={
+                (selected === "web3" && "text-accent") || "text-secondary"
+              }
+            >
+              web 3
+            </span>
+          </a>
+        </div>
+      )}
     </>
   );
 };
-
-export const NAVIGATION_ITEMS = [
-  <Link href="/app" key={0}>
-    <HomeIcon className={"h-5 w-5"} />{" "}
-  </Link>,
-  <Link href="/connections" key={1}>
-    <InboxStackIcon className={"h-5 w-5"} />
-  </Link>,
-];
 
 const Footer = () => {
   const publishVCs = usePublishVCs();
   const [showSave, setShowSave] = useState(true);
   const creds = useCredentialStore((state) => state.credentials);
-  const openModal = useModalStore((state) => state.open);
+
+  const router = useRouter();
+  const isPublicPage = router.pathname.includes("public");
 
   useEffect(() => {
     console.log("useEffect");
     setShowSave(true);
   }, [creds]);
+
+  if (isPublicPage) {
+    return null;
+  }
 
   return (
     <div className="b h-90 btm-nav min-h-max border-t-2">
