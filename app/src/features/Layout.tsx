@@ -17,19 +17,21 @@ const Header = () => {
   const { selected, setSelected } = useWeb2Web3Selector((state) => state);
 
   const web2Classes = clsx(
-    "tab-bordered tab",
+    "tab-bordered tab text-2xl",
     selected === "web2" ? "tab-active" : ""
   );
 
   const web3Classes = clsx(
-    "tab-bordered tab",
+    "tab-bordered tab text-2xl",
     selected === "web3" ? "tab-active" : ""
   );
   return (
-    <div className="flex flex-col flex-nowrap">
-      <h1 className="mt-8 align-middle text-5xl font-extrabold tracking-tight text-white sm:text-[5rem]">
-        <CheckmarkIcon></CheckmarkIcon>
-      </h1>
+    <>
+      <div className="flex flex-col flex-nowrap content-center justify-center text-center">
+        <h1 className="mt-8 align-middle text-5xl font-extrabold tracking-tight text-white sm:text-[5rem]">
+          <CheckmarkIcon></CheckmarkIcon>
+        </h1>
+      </div>
       <div className="tabs">
         <a
           className={web2Classes}
@@ -60,7 +62,7 @@ const Header = () => {
           </span>
         </a>
       </div>
-    </div>
+    </>
   );
 };
 
