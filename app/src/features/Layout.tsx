@@ -10,8 +10,6 @@ import clsx from "clsx";
 import { usePublishVCs } from "./cms/PublishToCmsButton";
 import { useRouter } from "next/router";
 import { useCredentialStore } from "./CredentialStore";
-import { useModalStore } from "./modals/useModalStore";
-import { useRouter } from "next/router";
 
 const Header = () => {
   const { selected, setSelected } = useWeb2Web3Selector((state) => state);
@@ -35,7 +33,7 @@ const Header = () => {
           <CheckmarkIcon></CheckmarkIcon>
         </h1>
       </div>
-      {router.pathname !== "/" &&  isPublicPage ? null : (
+      {router.pathname !== "/" && isPublicPage ? null : (
         <div className="tabs">
           <a
             className={web2Classes}
