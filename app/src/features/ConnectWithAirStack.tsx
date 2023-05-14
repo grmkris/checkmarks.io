@@ -9,6 +9,5 @@ export const sismoConnectConfig: SismoConnectClientConfig = {
 export const ConnectWithAirStack = () => {
   const receiveProofsMutation = api.sismo.receiveProofs.useMutation();
 
-  console.log("sismoVC", JSON.stringify(receiveProofsMutation.data));
   return <Image src="/airstack.png" alt="me" width={200} height={64} />;
 };
