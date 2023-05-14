@@ -3,7 +3,6 @@ import { ClerkProvider } from "@clerk/nextjs";
 import { api } from "../utils/api";
 
 import "../styles/globals.css";
-import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { createConfig, mainnet, WagmiConfig } from "wagmi";
 import { createPublicClient, http } from "viem";
@@ -26,8 +25,8 @@ const MyApp: AppType = ({ Component, pageProps }) => {
     <WagmiConfig config={config}>
       <QueryClientProvider client={queryClient}>
         <ClerkProvider
-          afterSignUpUrl="/app"
-          afterSignInUrl={"/app"}
+          afterSignUpUrl="/socials"
+          afterSignInUrl={"/socials"}
           appearance={{
             baseTheme: dark,
           }}
@@ -35,7 +34,6 @@ const MyApp: AppType = ({ Component, pageProps }) => {
           <Layout>
             <Component {...pageProps} />
           </Layout>
-          <ReactQueryDevtools />
         </ClerkProvider>
       </QueryClientProvider>
     </WagmiConfig>
