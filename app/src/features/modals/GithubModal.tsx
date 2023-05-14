@@ -26,9 +26,9 @@ export const GithubModal = () => {
     }
   );
 
-  if (data.data?.vc) {
+  if (!!data.data) {
     store({
-      credential: data.data.vc,
+      credential: data.data,
       provider: SocialNames.Discord,
     });
   }
