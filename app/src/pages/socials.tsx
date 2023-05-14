@@ -29,9 +29,9 @@ const Socials = () => {
 
   return (
     <div className="hero min-h-screen">
-      <div className="hero-overlay bg-base-100"></div>
-      <div className="hero-content text-center text-neutral-content">
-        <div className="flex flex-col">
+      <div className="hero-overlay mt-6 min-h-screen bg-base-100"></div>
+      <div className="hero-content min-h-screen text-center text-neutral-content">
+        <div className="mt-6 flex min-h-screen flex-col">
           {(selected === "web2" ? web2SocialsButtons : web3SocialsButtons).map(
             (social, index) => {
               return (

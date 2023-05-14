@@ -14,12 +14,12 @@ const Header = () => {
   const { selected, setSelected } = useWeb2Web3Selector((state) => state);
 
   const web2Classes = clsx(
-    "tab-bordered tab",
+    "tab-bordered tab text-2xl",
     selected === "web2" ? "tab-active" : ""
   );
 
   const web3Classes = clsx(
-    "tab-bordered tab",
+    "tab-bordered tab text-2xl",
     selected === "web3" ? "tab-active" : ""
   );
   return (

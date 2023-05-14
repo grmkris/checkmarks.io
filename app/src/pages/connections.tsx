@@ -18,10 +18,13 @@ export default function Connections() {
   const { selected, setSelected } = useWeb2Web3Selector((state) => state);
 
   return (
-    <div className="container mx-auto flex min-h-screen max-w-4xl flex-col items-center justify-center bg-base-100">
-      <div className="container flex flex-col items-center justify-center gap-12 px-4 py-16 ">
-        {selected === "web2" && <Clerk />}
-        {selected === "web3" && <Web3Creds />}
+    <div className="hero min-h-screen">
+      <div className="hero-overlay mt-6 min-h-screen bg-base-100"></div>
+      <div className="hero-content min-h-screen text-center text-neutral-content">
+        <div className="mt-6 flex min-h-screen flex-col">
+          {selected === "web2" && <Clerk />}
+          {selected === "web3" && <Web3Creds />}
+        </div>
       </div>
     </div>
   );
