@@ -10,10 +10,12 @@ import clsx from "clsx";
 import { usePublishVCs } from "./cms/PublishToCmsButton";
 import { useCredentialStore } from "./CredentialStore";
 import { useRouter } from "next/router";
+import { useUser } from "@clerk/nextjs";
 
 const Header = () => {
   const { selected, setSelected } = useWeb2Web3Selector((state) => state);
   const router = useRouter();
+  const user = useUser();
 
   const isPublicPage = router.pathname.includes("public");
 
@@ -26,14 +28,19 @@ const Header = () => {
     "tab-bordered tab text-2xl",
     selected === "web3" ? "tab-active" : ""
   );
+
+  const showTabs = router.pathname !== "/" && !isPublicPage;
+
   return (
     <>
       <div className="flex flex-col flex-nowrap content-center justify-center text-center">
         <h1 className="mt-8 align-middle text-5xl font-extrabold tracking-tight text-white sm:text-[5rem]">
-          <CheckmarkIcon></CheckmarkIcon>
+          <div onClick={() => router.push("/")}>
+            <CheckmarkIcon />
+          </div>
         </h1>
       </div>
-      {router.pathname === "/" || isPublicPage ? null : (
+      {showTabs && (
         <div className="tabs">
           <a
             className={web2Classes}

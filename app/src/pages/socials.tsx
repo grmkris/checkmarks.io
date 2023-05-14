@@ -1,6 +1,8 @@
-import { SocialNames, useModalStore } from "../features/modals/useModalStore";
 import { useUser } from "@clerk/nextjs";
 import { useWeb2Web3Selector } from "../features/web2Web3SelectorStore";
+import { Loading } from "../components/Loading";
+import { SocialNames, useModalStore } from "../features/modals/useModalStore";
+import Onboarding from "./onboarding";
 
 export interface Social {
   name: SocialNames;
@@ -9,6 +11,17 @@ export interface Social {
 const Socials = () => {
   const user = useUser();
   const { selected } = useWeb2Web3Selector((state) => state);
+  const openModal = useModalStore((state) => state.openModal);
+  const hasConnectedAccounts = user.user?.externalAccounts;
+
+  if (!user.isLoaded)
+    return (
+      <div className="hero min-h-screen">
+        <Loading />
+      </div>
+    );
+
+  if (!hasConnectedAccounts.length) return <Onboarding></Onboarding>;
 
   const web2SocialsButtons: Social[] = [
     { name: SocialNames.Facebook },
@@ -24,8 +37,6 @@ const Socials = () => {
     { name: SocialNames.Sismo },
     { name: SocialNames.Onchain },
   ];
-
-  const openModal = useModalStore((state) => state.openModal);
 
   return (
     <div className="hero min-h-screen">
