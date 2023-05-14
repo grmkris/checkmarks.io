@@ -11,10 +11,13 @@ import { usePublishVCs } from "./cms/PublishToCmsButton";
 import { useRouter } from "next/router";
 import { useCredentialStore } from "./CredentialStore";
 import { useModalStore } from "./modals/useModalStore";
+import { useRouter } from "next/router";
 
 const Header = () => {
   const { selected, setSelected } = useWeb2Web3Selector((state) => state);
   const router = useRouter();
+
+  const isPublicPage = router.pathname.includes("public");
 
   const web2Classes = clsx(
     "tab-bordered tab text-2xl",
@@ -32,7 +35,7 @@ const Header = () => {
           <CheckmarkIcon></CheckmarkIcon>
         </h1>
       </div>
-      {router.pathname !== "/" && (
+      {router.pathname !== "/" &&  isPublicPage ? null : (
         <div className="tabs">
           <a
             className={web2Classes}
@@ -73,7 +76,9 @@ const Footer = () => {
 
   const [showSave, setShowSave] = useState(true);
   const creds = useCredentialStore((state) => state.credentials);
-  const openModal = useModalStore((state) => state.open);
+
+  const router = useRouter();
+  const isPublicPage = router.pathname.includes("public");
 
   const router = useRouter();
 
@@ -81,6 +86,10 @@ const Footer = () => {
     console.log("useEffect");
     setShowSave(true);
   }, [creds]);
+
+  if (isPublicPage) {
+    return null;
+  }
 
   return (
     <div>
