@@ -9,8 +9,6 @@ import { useWeb2Web3Selector } from "./web2Web3SelectorStore";
 import clsx from "clsx";
 import { usePublishVCs } from "./cms/PublishToCmsButton";
 import { useCredentialStore } from "./CredentialStore";
-import { useModalStore } from "./modals/useModalStore";
-import { useRouter } from "next/router";
 
 const Header = () => {
   const { selected, setSelected } = useWeb2Web3Selector((state) => state);
