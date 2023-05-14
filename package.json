@@ -1,5 +1,5 @@
 {
-  "name": "t3-app-clerk-minimal",
+  "name": "Checkmarks",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
@@ -9,8 +9,8 @@
     "dev:checkmarks-app": "pnpm run --filter clerk-t3-minimal dev"
   },
   "keywords": [],
-  "author": "",
-  "license": "ISC",
+  "author": "kristjan.grm1@gmail.com, guille86598@gmail.com",
+  "license": "MIT",
   "pnpm": {
     "patchedDependencies": {
       "fastfile@0.0.20": "patches/fastfile@0.0.20.patch"

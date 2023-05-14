@@ -56,3 +56,17 @@ The project integrates all kinds of interesting tech from ETHLisbon's sponsors.
 
 For our design, we used Figma, Framer, Adobe Illustrator, Affinity Design and Vectornator. Our landing page on Framer
 links to the app on checkmarks.io
+
+## How to run the App?
+
+1.
+
+```bash
+pnpm install
+```
+
+2.
+
+```bash
+cd app && pnpm run dev 
+```
