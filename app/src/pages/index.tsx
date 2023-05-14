@@ -22,19 +22,12 @@ const Home: NextPage = () => {
           <h1 className="mb-5 text-5xl text-accent">
             One check, <br></br> infinite trust{" "}
           </h1>
-
-<<<<<<< HEAD
           <SignInButton mode="modal">
-            <button className="btn-primary btn">Connect your wallet</button>
+            <button className="btn-primary btn  space-y-2 p-3 px-10">
+              {" "}
+              connect <br></br>your wallet
+            </button>
           </SignInButton>
-=======
-          <button
-            className="btn-primary btn space-y-2 p-3 px-10 "
-            onClick={() => router.push("/connections#/web3-wallet ")}
-          >
-            connect <br></br>your wallet
-          </button>
->>>>>>> 2a3e0aa (styles)
         </div>
       </div>
     </div>
