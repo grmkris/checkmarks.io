@@ -1,6 +1,5 @@
 import type { ReactNode } from "react";
-import Link from "next/link";
-import { HomeIcon, InboxStackIcon } from "@heroicons/react/24/outline";
+import { useEffect, useState } from "react";
 import { AppModals } from "./modals/AppModals";
 import Head from "next/head";
 import { CheckmarkIcon } from "../components/svg/CheckmarkIcon";
@@ -9,14 +8,15 @@ import { MenuButtonSVG } from "../components/svg/MenuButtonSVG";
 import { useWeb2Web3Selector } from "./web2Web3SelectorStore";
 import clsx from "clsx";
 import { usePublishVCs } from "./cms/PublishToCmsButton";
+import { useRouter } from "next/router";
 import { useCredentialStore } from "./CredentialStore";
-import { useEffect, useState } from "react";
 import { useModalStore } from "./modals/useModalStore";
 import { useRouter } from "next/router";
 
 const Header = () => {
   const { selected, setSelected } = useWeb2Web3Selector((state) => state);
   const router = useRouter();
+
   const isPublicPage = router.pathname.includes("public");
 
   const web2Classes = clsx(
@@ -35,7 +35,7 @@ const Header = () => {
           <CheckmarkIcon></CheckmarkIcon>
         </h1>
       </div>
-      {isPublicPage ? null : (
+      {router.pathname !== "/" &&  isPublicPage ? null : (
         <div className="tabs">
           <a
             className={web2Classes}
@@ -73,11 +73,14 @@ const Header = () => {
 
 const Footer = () => {
   const publishVCs = usePublishVCs();
+
   const [showSave, setShowSave] = useState(true);
   const creds = useCredentialStore((state) => state.credentials);
 
   const router = useRouter();
   const isPublicPage = router.pathname.includes("public");
+
+  const router = useRouter();
 
   useEffect(() => {
     console.log("useEffect");
@@ -89,26 +92,30 @@ const Footer = () => {
   }
 
   return (
-    <div className="b h-90 btm-nav min-h-max border-t-2">
-      {showSave && (
-        <div>
-          <a
-            className="link-accent link text-2xl hover:link-warning"
-            onClick={() => {
-              publishVCs.mutate();
-              setShowSave(false);
-            }}
-          >
-            save
-          </a>
+    <div>
+      {router.pathname !== "/" && (
+        <div className="b h-90 btm-nav min-h-max border-t-2">
+          {showSave && (
+            <div>
+              <a
+                className="link-accent link text-2xl hover:link-warning"
+                onClick={() => {
+                  publishVCs.mutate();
+                  setShowSave(false);
+                }}
+              >
+                save
+              </a>
+            </div>
+          )}
+          <div>
+            <ProfileSVG></ProfileSVG>
+          </div>
+          <div>
+            <MenuButtonSVG></MenuButtonSVG>
+          </div>
         </div>
       )}
-      <div>
-        <ProfileSVG></ProfileSVG>
-      </div>
-      <div>
-        <MenuButtonSVG></MenuButtonSVG>
-      </div>
     </div>
   );
 };

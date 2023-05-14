@@ -1,22 +1,27 @@
 import { type NextPage } from "next";
-import { useModalStore } from "../features/modals/useModalStore";
-import Link from "next/link";
+import { useRouter } from "next/router";
 
 const Home: NextPage = () => {
-  const openModal = useModalStore((s) => s.openModal);
+  const router = useRouter();
+
   return (
-    <>
-      <div className="container mx-auto flex min-h-screen max-w-4xl flex-col items-center justify-center bg-base-100">
-        <div className="container flex flex-col items-center justify-center gap-12 px-4 py-16 ">
-          <Link
-            href={"/app"}
-            className="cursor-pointer text-2xl font-extrabold tracking-tight text-accent underline hover:text-primary sm:text-[2rem]"
+    <div className="hero min-h-screen">
+      <div className="hero-overlay bg-base-100"></div>
+      <div className="hero-content text-center text-neutral-content">
+        <div className="max-w-md">
+          <h1 className="mb-5 text-5xl text-accent">
+            Get your verified credentials here
+          </h1>
+
+          <button
+            className="btn-primary btn"
+            onClick={() => router.push("/connections#/web3-wallet ")}
           >
-            Check tha app
-          </Link>
+            connect your wallet
+          </button>
         </div>
       </div>
-    </>
+    </div>
   );
 };
 
