@@ -33,7 +33,7 @@ const Header = () => {
           <CheckmarkIcon></CheckmarkIcon>
         </h1>
       </div>
-      {router.pathname !== "/" && isPublicPage ? null : (
+      {router.pathname === "/" || isPublicPage ? null : (
         <div className="tabs">
           <a
             className={web2Classes}
