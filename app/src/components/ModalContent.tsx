@@ -92,11 +92,6 @@ export const ModalContent = ({
           ))}
         </>
       )}
-      <div className="modal-action justify-center">
-        <button className="btn-secondary btn" onClick={() => close()}>
-          Done
-        </button>
-      </div>
     </>
   );
 };
