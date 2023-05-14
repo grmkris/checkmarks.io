@@ -1,8 +1,12 @@
 import { type NextPage } from "next";
 import { useRouter } from "next/router";
+import { SignInButton, useUser } from "@clerk/nextjs";
 
 const Home: NextPage = () => {
+  const user = useUser();
   const router = useRouter();
+
+  if (user.isSignedIn) router.push("/socials");
 
   return (
     <div className="hero min-h-screen">
@@ -13,12 +17,9 @@ const Home: NextPage = () => {
             Get your verified credentials here
           </h1>
 
-          <button
-            className="btn-primary btn"
-            onClick={() => router.push("/connections#/web3-wallet ")}
-          >
-            connect your wallet
-          </button>
+          <SignInButton mode="modal">
+            <button className="btn-primary btn">Connect your wallet</button>
+          </SignInButton>
         </div>
       </div>
     </div>

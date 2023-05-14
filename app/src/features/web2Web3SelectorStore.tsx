@@ -6,7 +6,7 @@ export interface IWeb2Web3Selector {
 }
 
 export const useWeb2Web3Selector = create<IWeb2Web3Selector>((set) => ({
-  selected: "web3",
+  selected: "web2",
   setSelected: (selected) => {
     set({ selected });
   },
