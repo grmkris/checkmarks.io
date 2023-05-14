@@ -9,6 +9,9 @@ import { MenuButtonSVG } from "../components/svg/MenuButtonSVG";
 import { useWeb2Web3Selector } from "./web2Web3SelectorStore";
 import clsx from "clsx";
 import { usePublishVCs } from "./cms/PublishToCmsButton";
+import { useCredentialStore } from "./CredentialStore";
+import { useEffect, useState } from "react";
+import { useModalStore } from "./modals/useModalStore";
 
 const Header = () => {
   const { selected, setSelected } = useWeb2Web3Selector((state) => state);
@@ -72,18 +75,30 @@ export const NAVIGATION_ITEMS = [
 
 const Footer = () => {
   const publishVCs = usePublishVCs();
+  const [showSave, setShowSave] = useState(true);
+  const creds = useCredentialStore((state) => state.credentials);
+  const openModal = useModalStore((state) => state.open);
+
+  useEffect(() => {
+    console.log("useEffect");
+    setShowSave(true);
+  }, [creds]);
+
   return (
     <div className="b h-90 btm-nav min-h-max border-t-2">
-      <div>
-        <a
-          className="link-accent link text-2xl hover:link-warning"
-          onClick={() => {
-            publishVCs.mutate();
-          }}
-        >
-          save
-        </a>
-      </div>
+      {showSave && (
+        <div>
+          <a
+            className="link-accent link text-2xl hover:link-warning"
+            onClick={() => {
+              publishVCs.mutate();
+              setShowSave(false);
+            }}
+          >
+            save
+          </a>
+        </div>
+      )}
       <div>
         <ProfileSVG></ProfileSVG>
       </div>
